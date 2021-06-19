@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DotNET\My_DotNET_ToolBoxes\VitalTools\VitalTools\VitalTools.csproj" />
+  </ItemGroup>
+
+</Project>

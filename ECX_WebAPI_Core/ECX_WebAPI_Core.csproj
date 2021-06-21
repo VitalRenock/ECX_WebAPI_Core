@@ -6,11 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\..\..\DotNET\My_DotNET_ToolBoxes\VitalTools\VitalTools\VitalTools.csproj" />
+    <ProjectReference Include="..\ECX_WebAPI_ClientClayer\ECX_WebAPI_ClientClayer.csproj" />
+    <ProjectReference Include="..\ECX_WebAPI_GlobalLayer\ECX_WebAPI_GlobalLayer.csproj" />
   </ItemGroup>
 
 </Project>

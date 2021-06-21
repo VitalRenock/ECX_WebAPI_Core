@@ -4,14 +4,14 @@ using System.Text;
 
 namespace ECX_WebAPI_GlobalLayer.Models
 {
-	internal class UserGlobal
+	public class UserGlobal
 	{
-		internal int Id { get; set; }
-		internal string Email { get; set; }
-		internal string Password { get; set; }
-		internal string Nickname { get; set; }
-		internal string Lastname { get; set; }
-		internal string Firstname { get; set; }
-		internal string Role { get; set; }
+		public int Id { get; set; }
+		public string Email { get; set; }
+		public string Password { get; set; }
+		public string Nickname { get; set; }
+		public string Lastname { get; set; }
+		public string Firstname { get; set; }
+		public string Role { get; set; }
 	}
 }

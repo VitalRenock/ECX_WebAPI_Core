@@ -9,8 +9,16 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+
+using ECX_WebAPI_ClientClayer.Models;
+using ECX_WebAPI_ClientClayer.Services;
+using ECX_WebAPI_GlobalLayer.Models;
+using ECX_WebAPI_GlobalLayer.Services;
+using VitalTools.Database;
+using VitalTools.Model.Services;
 
 namespace ECX_WebAPI_Core
 {
@@ -26,12 +34,18 @@ namespace ECX_WebAPI_Core
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-
 			services.AddControllers();
+
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "ECX_WebAPI_Core", Version = "v1" });
 			});
+
+			services.AddSingleton(connection => new Connection(SqlClientFactory.Instance, @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ECX_Database;Integrated Security=True;"));
+			//services.AddSingleton<IServiceModelAUTH<UserGlobal>, UserGlobalService>();
+			//services.AddSingleton<IServiceModelAUTH<UserClient>, UserClientService>();
+			services.AddSingleton<UserGlobalService>();
+			services.AddSingleton<UserClientService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

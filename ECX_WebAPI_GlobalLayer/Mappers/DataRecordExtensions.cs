@@ -15,12 +15,12 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 			return new UserGlobal()
 			{
 				Id = (int)dataRecord["ID"],
-				Email = (string)dataRecord["ID"],
-				Password = (string)dataRecord["ID"],
-				Nickname = (string)dataRecord["ID"],
-				Lastname = (string)dataRecord["ID"],
-				Firstname = (string)dataRecord["ID"],
-				Role = (string)dataRecord["ID"]
+				Email = (string)dataRecord["Email"],
+				Password = (string)dataRecord["Password"],
+				Nickname = (string)dataRecord["Nickname"],
+				Lastname = (string)dataRecord["Lastname"],
+				Firstname = (string)dataRecord["Firstname"],
+				Role = (string)dataRecord["Role_ID"]
 			};
 		}
 	}

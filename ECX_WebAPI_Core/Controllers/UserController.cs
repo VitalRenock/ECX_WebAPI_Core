@@ -32,7 +32,8 @@ namespace ECX_WebAPI_Core.Controllers
 		[HttpPost]
 		public IActionResult Register([FromBody] UserRegister user)
 		{
-			UserClient newUser = user.ToClient();
+			//UserClient newUser = user.ToClient();
+			UserClient newUser = null;
 			//if (userClientService.Register(user.ToClient()))
 			if (userClientService.Register(newUser))
 				return Ok();

@@ -20,20 +20,23 @@ namespace ECX_WebAPI_ClientClayer.Models
 
 		#region Constructors
 
-		public UserClient(string email, string password, string nickname, string lastname, string firstname, string role)
+		public UserClient(int id, string email, string nickname, string lastname, string firstname, string role)
 		{
+			Id = id;
 			Email = email;
-			Password = password;
 			Nickname = nickname;
 			Lastname = lastname;
 			Firstname = firstname;
 			Role = role;
 		}
 
-		public UserClient(int id, string email, string password, string nickname, string lastname, string firstname, string role)
-			: this(email, password, nickname, lastname, firstname, role)
+		public UserClient(string email, string nickname, string lastname, string firstname, string role)
 		{
-			Id = id;
+			Email = email;
+			Nickname = nickname;
+			Lastname = lastname;
+			Firstname = firstname;
+			Role = role;
 		}
 
 		#endregion

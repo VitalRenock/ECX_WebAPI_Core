@@ -15,7 +15,6 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 			{
 				Id = user.Id,
 				Email = user.Email,
-				Password = user.Password,
 				Nickname = user.Nickname,
 				Lastname = user.Lastname,
 				Firstname = user.Firstname,
@@ -29,7 +28,6 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 			(
 				user.Id,
 				user.Email,
-				user.Password,
 				user.Nickname,
 				user.Lastname,
 				user.Firstname,

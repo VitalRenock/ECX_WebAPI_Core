@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DotNET\My_DotNET_ToolBoxes\VitalTools\VitalTools\VitalTools.csproj" />
+    <ProjectReference Include="..\..\..\My_DotNET_ToolBoxes\VitalTools\VitalTools\VitalTools.csproj" />
   </ItemGroup>
 
 </Project>

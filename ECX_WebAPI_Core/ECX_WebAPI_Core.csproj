@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DotNET\My_DotNET_ToolBoxes\VitalTools\VitalTools\VitalTools.csproj" />
     <ProjectReference Include="..\ECX_WebAPI_ClientClayer\ECX_WebAPI_ClientClayer.csproj" />
     <ProjectReference Include="..\ECX_WebAPI_GlobalLayer\ECX_WebAPI_GlobalLayer.csproj" />
   </ItemGroup>

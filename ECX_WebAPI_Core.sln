@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECX_WebAPI_Core", "ECX_WebAPI_Core\ECX_WebAPI_Core.csproj", "{059A3329-0BA3-4BF8-A2AB-1DD23150DC41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECX_WebAPI_Core", "ECX_WebAPI_Core\ECX_WebAPI_Core.csproj", "{059A3329-0BA3-4BF8-A2AB-1DD23150DC41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECX_WebAPI_GlobalLayer", "ECX_WebAPI_GlobalLayer\ECX_WebAPI_GlobalLayer.csproj", "{FC2D6030-E7F5-4676-B0A2-A42DBD23F0C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECX_WebAPI_GlobalLayer", "ECX_WebAPI_GlobalLayer\ECX_WebAPI_GlobalLayer.csproj", "{FC2D6030-E7F5-4676-B0A2-A42DBD23F0C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECX_WebAPI_ClientClayer", "ECX_WebAPI_ClientClayer\ECX_WebAPI_ClientClayer.csproj", "{74FD51BD-17F4-4A67-9833-50357744825A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECX_WebAPI_ClientClayer", "ECX_WebAPI_ClientClayer\ECX_WebAPI_ClientClayer.csproj", "{74FD51BD-17F4-4A67-9833-50357744825A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalTools", "..\..\DotNET\My_DotNET_ToolBoxes\VitalTools\VitalTools\VitalTools.csproj", "{5202BC83-C5CD-4FD5-AC70-15244505CD96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalTools", "..\..\My_DotNET_ToolBoxes\VitalTools\VitalTools\VitalTools.csproj", "{5202BC83-C5CD-4FD5-AC70-15244505CD96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

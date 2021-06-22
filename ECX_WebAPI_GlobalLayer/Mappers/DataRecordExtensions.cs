@@ -16,7 +16,6 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 			{
 				Id = (int)dataRecord["ID"],
 				Email = (string)dataRecord["Email"],
-				//Password = (string)dataRecord["Password"],
 				Nickname = (string)dataRecord["Nickname"],
 				Lastname = (string)dataRecord["Lastname"],
 				Firstname = (string)dataRecord["Firstname"],

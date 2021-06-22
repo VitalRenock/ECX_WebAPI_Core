@@ -12,12 +12,11 @@ using ECX_WebAPI_ClientClayer.Services;
 
 namespace ECX_WebAPI_Core.Controllers
 {
-	[Route("api/[controller]")]
 	[ApiController]
+	[Route("api/[controller]")]
 	public class UserController : ControllerBase
 	{
 		private readonly UserClientService userClientService;
-		//private readonly IServiceModelAUTH<UserClient> userClientService;
 
 		#region Constructor
 		
@@ -25,26 +24,34 @@ namespace ECX_WebAPI_Core.Controllers
 		public UserController(UserClientService userClientService)
 		{
 			this.userClientService = userClientService;
-		} 
+		}
 
 		#endregion
 
 		[HttpPost]
-		public IActionResult Register([FromBody] UserRegister user)
+		[Route("Register")]
+		//public bool Register([FromBody] UserRegister user)
+		//{
+		//	return userClientService.Register(user.ToClient());
+		//}
+		public IActionResult Register([FromBody]UserRegister user)
 		{
-			//UserClient newUser = user.ToClient();
-			UserClient newUser = null;
-			//if (userClientService.Register(user.ToClient()))
-			if (userClientService.Register(newUser))
-				return Ok();
-			else
-				return BadRequest();
+			userClientService.Register(user.ToClient());
+			return Ok();
 		}
+		//[HttpPost]
+		//public IActionResult Register([FromBody] UserRegister user)
+		//{
+		//	if (userClientService.Register(user))
+		//		return Ok();
+		//	else
+		//		return BadRequest();
+		//}
 
 		[HttpGet]
 		public IEnumerable<UserClient> GetUsers()
 		{
-			return userClientService.GetUsers();
+			return userClientService.GetAllUsers();
 		}
 	}
 }

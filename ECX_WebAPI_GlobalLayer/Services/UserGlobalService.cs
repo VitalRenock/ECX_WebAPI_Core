@@ -3,6 +3,7 @@ using ECX_WebAPI_GlobalLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using VitalTools.Database;
 using VitalTools.Model.Services;
 
@@ -12,34 +13,75 @@ namespace ECX_WebAPI_GlobalLayer.Services
 	{
 		private Connection connection;
 
+		#region Constructor
+		
 		public UserGlobalService(Connection connection)
 		{
 			this.connection = connection;
+		} 
+
+		#endregion
+
+		public bool Register(UserGlobal user)
+		{
+			Command command = new Command("ECX_Register_User", true);
+			command.AddParameter("email", user.Email);
+			command.AddParameter("password", user.Password);
+			command.AddParameter("nickname", user.Nickname);
+			command.AddParameter("lastname", user.Lastname);
+			command.AddParameter("firstname", user.Firstname);
+			command.AddParameter("role_ID", user.Role);
+
+			int rowAffected = connection.ExecuteNonQuery(command);
+
+			#region Securité Password: On attends pas le garbage collector, on supprimme immédiatement le password et la commande (contenant le password)
+
+			user.Password = null;
+			command = null;
+
+			#endregion
+
+			return rowAffected == 1;
 		}
 
 		public UserGlobal Login(string email, string password)
 		{
-			throw new NotImplementedException();
+			Command command = new Command("ECX_Login_User", true);
+			command.AddParameter("email", email);
+			command.AddParameter("password", password);
+
+			UserGlobal user = connection.ExecuteReader(command, (dataRecord) => dataRecord.ToUserGlobal()).SingleOrDefault();
+
+			#region Securité Password: On attends pas le garbage collector, on supprimme immédiatement le password et la commande (contenant le password)
+
+			password = null;
+			command = null;
+
+			#endregion
+
+			return user;
 		}
 
-		public bool Register(UserGlobal user)
+		public bool Update(UserGlobal user)
 		{
-			Command command = new Command("ECX_Create_User", true);
-			command.AddParameter("email", user.Email);
-			command.AddParameter("password", user.Password);
-			command.AddParameter("nickName", user.Nickname);
-			command.AddParameter("lastName", user.Lastname);
-			command.AddParameter("firstName", user.Firstname);
-			command.AddParameter("role_ID", user.Role);
+			Command command = new Command("ECX_Update_User", true);
+			command.AddParameter("id", user.Id);
+			command.AddParameter("nickname", user.Nickname);
+			command.AddParameter("lastname", user.Lastname);
+			command.AddParameter("firstname", user.Firstname);
 
-			int rowAffected = connection.ExecuteNonQuery(command);
-			user.Password = null;
-			return rowAffected == 1;
+			return connection.ExecuteNonQuery(command) == 0;
 		}
 
+		public bool Delete(int id)
+		{
+			Command command = new Command("ECX_Delete_User", true);
+			command.AddParameter("id", id);
 
-		// Continuer à essayer de ramener les infos de la DB jusqu'au Global Layer
-		public IEnumerable<UserGlobal> GetUsers()
+			return connection.ExecuteNonQuery(command) == 0;
+		}
+
+		public IEnumerable<UserGlobal> GetAllUsers()
 		{
 			Command command = new Command("SELECT * FROM ECX_View_AllUsers", false);
 			return connection.ExecuteReader(command, u => u.ToUserGlobal());

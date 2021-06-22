@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using ECX_WebAPI_ClientClayer.Models;
-using ECX_WebAPI_Core.Models;
+using WebApplication1.Models;
 
-namespace ECX_WebAPI_Core.Mappers
+namespace WebApplication1.Mappers
 {
 	internal static class Mapper
 	{
@@ -14,10 +14,10 @@ namespace ECX_WebAPI_Core.Mappers
 		{
 			return new UserClient(
 				user.Id,
-				user.Email, 
-				user.Nickname, 
-				user.Lastname, 
-				user.Firstname, 
+				user.Email,
+				user.Nickname,
+				user.Lastname,
+				user.Firstname,
 				user.Role);
 		}
 
@@ -30,6 +30,5 @@ namespace ECX_WebAPI_Core.Mappers
 				user.Firstname,
 				user.Role);
 		}
-
 	}
 }

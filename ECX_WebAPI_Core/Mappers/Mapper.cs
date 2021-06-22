@@ -10,18 +10,7 @@ namespace ECX_WebAPI_Core.Mappers
 {
 	internal static class Mapper
 	{
-		internal static UserClient ToClient(this UserApi user)
-		{
-			return new UserClient(
-				user.Id,
-				user.Email, 
-				user.Nickname, 
-				user.Lastname, 
-				user.Firstname, 
-				user.Role);
-		}
-
-		internal static UserClient ToClient(this UserRegister user)
+		internal static UserClient ToUserClient(this FormRegister user)
 		{
 			return new UserClient(
 				user.Email,

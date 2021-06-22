@@ -77,7 +77,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			Command command = new Command("ECX_Delete_User", true);
 			command.AddParameter("id", id);
 
-			return connection.ExecuteNonQuery(command) == 0;
+			return connection.ExecuteNonQuery(command) == 1;
 		}
 
 		public IEnumerable<UserGlobal> GetAllUsers()

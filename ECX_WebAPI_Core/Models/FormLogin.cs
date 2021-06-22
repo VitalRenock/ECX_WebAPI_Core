@@ -6,20 +6,12 @@ using System.Threading.Tasks;
 
 namespace ECX_WebAPI_Core.Models
 {
-	public class UserRegister
+	public class FormLogin
 	{
 		[Required]
 		[EmailAddress]
 		public string Email { get; set; }
 		[Required]
 		public string Password { get; set; }
-		[Required]
-		public string Nickname { get; set; }
-		[Required]
-		public string Lastname { get; set; }
-		[Required]
-		public string Firstname { get; set; }
-		[Required]
-		public string Role { get; set; }
 	}
 }

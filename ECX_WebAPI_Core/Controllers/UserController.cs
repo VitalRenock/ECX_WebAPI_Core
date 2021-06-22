@@ -30,37 +30,45 @@ namespace ECX_WebAPI_Core.Controllers
 
 		[HttpPost]
 		[Route("Register")]
-		public IActionResult Register([FromBody]UserRegister user)
+		public IActionResult Register([FromBody] FormRegister form)
 		{
-			userClientService.Register(user.ToClient());
-			return Ok();
+			if (userClientService.Register(form.ToUserClient()))
+				return Ok();
+			else
+				return BadRequest();
 		}
-		//public bool Register([FromBody] UserRegister user)
-		//{
-		//	return userClientService.Register(user.ToClient());
-		//}
-		//[HttpPost]
-		//public IActionResult Register([FromBody] UserRegister user)
-		//{
-		//	if (userClientService.Register(user))
-		//		return Ok();
-		//	else
-		//		return BadRequest();
-		//}
+
+		[HttpPost]
+		[Route("Login")]
+		public IActionResult Login([FromBody] FormLogin form)
+		{
+			UserClient user = userClientService.Login(form.Email, form.Password);
+
+			// Sécurité Password
+			form = null;
+
+			if (user != null)
+			{
+				return Ok(user);
+			}
+			else
+				return BadRequest();
+		}
+
+		[HttpDelete("{id}")]
+		public IActionResult Delete(int id)
+		{
+			if (userClientService.Delete(id))
+				return Ok();
+			else
+				return BadRequest();
+		}
 
 		[HttpGet]
+		[Route("GetAll")]
 		public IEnumerable<UserClient> GetUsers()
 		{
 			return userClientService.GetAllUsers();
 		}
 	}
 }
-
-//{
-//	"Email": "test@mail.com",
-//	"Password": "test1234=",
-//	"Nickname": "testNickname",
-//	"Lastname": "testLastname",
-//	"Firstname": "testfirstname",
-//	"Role": "Administrateur"
-//}

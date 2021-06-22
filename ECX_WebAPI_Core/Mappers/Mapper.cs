@@ -25,6 +25,7 @@ namespace ECX_WebAPI_Core.Mappers
 		{
 			return new UserClient(
 				user.Email,
+				user.Password,
 				user.Nickname,
 				user.Lastname,
 				user.Firstname,

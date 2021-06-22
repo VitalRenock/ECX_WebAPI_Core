@@ -30,15 +30,15 @@ namespace ECX_WebAPI_Core.Controllers
 
 		[HttpPost]
 		[Route("Register")]
-		//public bool Register([FromBody] UserRegister user)
-		//{
-		//	return userClientService.Register(user.ToClient());
-		//}
 		public IActionResult Register([FromBody]UserRegister user)
 		{
 			userClientService.Register(user.ToClient());
 			return Ok();
 		}
+		//public bool Register([FromBody] UserRegister user)
+		//{
+		//	return userClientService.Register(user.ToClient());
+		//}
 		//[HttpPost]
 		//public IActionResult Register([FromBody] UserRegister user)
 		//{

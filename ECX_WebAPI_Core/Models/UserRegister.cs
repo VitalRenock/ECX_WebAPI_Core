@@ -10,16 +10,16 @@ namespace ECX_WebAPI_Core.Models
 	{
 		[Required]
 		[EmailAddress]
-		internal string Email { get; set; }
+		public string Email { get; set; }
 		[Required]
-		internal string Password { get; set; }
+		public string Password { get; set; }
 		[Required]
-		internal string Nickname { get; set; }
+		public string Nickname { get; set; }
 		[Required]
-		internal string Lastname { get; set; }
+		public string Lastname { get; set; }
 		[Required]
-		internal string Firstname { get; set; }
+		public string Firstname { get; set; }
 		[Required]
-		internal string Role { get; set; }
+		public string Role { get; set; }
 	}
 }

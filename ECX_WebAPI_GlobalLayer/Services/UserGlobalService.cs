@@ -30,7 +30,6 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			command.AddParameter("nickname", user.Nickname);
 			command.AddParameter("lastname", user.Lastname);
 			command.AddParameter("firstname", user.Firstname);
-			command.AddParameter("role_ID", user.Role);
 
 			int rowAffected = connection.ExecuteNonQuery(command);
 

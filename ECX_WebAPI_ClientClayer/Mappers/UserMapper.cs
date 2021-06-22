@@ -14,6 +14,7 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 			return new UserGlobal()
 			{
 				Id = user.Id,
+				Password = user.Password,
 				Email = user.Email,
 				Nickname = user.Nickname,
 				Lastname = user.Lastname,

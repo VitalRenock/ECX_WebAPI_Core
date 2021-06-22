@@ -39,6 +39,16 @@ namespace ECX_WebAPI_ClientClayer.Models
 			Role = role;
 		}
 
+		public UserClient(string email, string password, string nickname, string lastname, string firstname, string role)
+		{
+			Email = email;
+			Password = password;
+			Nickname = nickname;
+			Lastname = lastname;
+			Firstname = firstname;
+			Role = role;
+		}
+
 		#endregion
 	}
 }

@@ -22,5 +22,20 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 				Role = (string)dataRecord["Name"]
 			};
 		}
+
+		internal static NoteGlobal ToNoteGlobal(this IDataRecord dataRecord)
+		{
+			// UserGlobal
+			return new NoteGlobal()
+			{
+				Id = (int)dataRecord["ID"],
+				Title = (string)dataRecord["Title"],
+				IsPublic = (bool)dataRecord["Public"],
+				ReviewState = (string)dataRecord["StateReview"],
+				ReviewCommentary = dataRecord["CommentaryReview"] is DBNull ? null : (string)dataRecord["CommentaryReview"],
+				ParentNote_Id = dataRecord["ParentNote_ID"] is DBNull ? 0 : (int)dataRecord["ParentNote_ID"],
+				User_Id = (int)dataRecord["User_ID"]
+			};
+		}
 	}
 }

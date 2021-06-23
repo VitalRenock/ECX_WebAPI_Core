@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using ECX_WebAPI_ClientClayer.Models;
-using VitalTools.Model.Services;
 using ECX_WebAPI_Core.Models;
 using ECX_WebAPI_Core.Mappers;
 using ECX_WebAPI_ClientClayer.Services;
@@ -55,6 +54,15 @@ namespace ECX_WebAPI_Core.Controllers
 				return BadRequest();
 		}
 
+		[HttpPut]
+		public IActionResult Update([FromBody] FormUpdateUser user)
+		{
+			if (userClientService.Update(user.ToUserClient()))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
 		[HttpDelete("{id}")]
 		public IActionResult Delete(int id)
 		{
@@ -70,5 +78,15 @@ namespace ECX_WebAPI_Core.Controllers
 		{
 			return userClientService.GetAllUsers();
 		}
+
+		[HttpPost]
+		[Route("SetRole")]
+		public IActionResult SetRole([FromBody] FormSetRoleUser form)
+		{
+			if (userClientService.SetRole(form.User_Id, form.Role_Name))
+				return Ok();
+			else
+				return BadRequest();
+		} 
 	}
 }

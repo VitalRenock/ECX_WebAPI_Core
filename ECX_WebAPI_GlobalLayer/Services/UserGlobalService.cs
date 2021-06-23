@@ -1,9 +1,10 @@
-﻿using ECX_WebAPI_GlobalLayer.Mappers;
-using ECX_WebAPI_GlobalLayer.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+
+using ECX_WebAPI_GlobalLayer.Mappers;
+using ECX_WebAPI_GlobalLayer.Models;
 using VitalTools.Database;
 using VitalTools.Model.Services;
 
@@ -84,6 +85,15 @@ namespace ECX_WebAPI_GlobalLayer.Services
 		{
 			Command command = new Command("SELECT * FROM ECX_View_AllUsers", false);
 			return connection.ExecuteReader(command, u => u.ToUserGlobal());
+		}
+
+		public bool SetRole(int id, string role)
+		{
+			Command command = new Command("ECX_SetRole_User", true);
+			command.AddParameter("user_ID", id);
+			command.AddParameter("role_name", role);
+
+			return connection.ExecuteNonQuery(command) == 1;
 		}
 
 	}

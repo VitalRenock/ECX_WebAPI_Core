@@ -27,7 +27,7 @@ namespace ECX_WebAPI_ClientClayer.Services
 
 		public UserClient Login(string email, string password)
 		{
-			UserClient user = userGlobalService.Login(email, password).ToClient();
+			UserClient user = userGlobalService.Login(email, password).ToUserClient();
 
 			// Sécurité Password
 			password = null;
@@ -37,7 +37,7 @@ namespace ECX_WebAPI_ClientClayer.Services
 
 		public bool Register(UserClient user)
 		{
-			bool result = userGlobalService.Register(user.ToGlobal());
+			bool result = userGlobalService.Register(user.ToUserGlobal());
 			// Sécurité Password
 			user.Password = null;
 
@@ -46,7 +46,7 @@ namespace ECX_WebAPI_ClientClayer.Services
 
 		public bool Update(UserClient user)
 		{
-			return userGlobalService.Update(user.ToGlobal());
+			return userGlobalService.Update(user.ToUserGlobal());
 		}
 
 		public bool Delete(int id)
@@ -56,7 +56,12 @@ namespace ECX_WebAPI_ClientClayer.Services
 
 		public IEnumerable<UserClient> GetAllUsers()
 		{
-			return userGlobalService.GetAllUsers().Select(u => u.ToClient());
+			return userGlobalService.GetAllUsers().Select(u => u.ToUserClient());
+		}
+
+		public bool SetRole(int id, string role)
+		{
+			return userGlobalService.SetRole(id, role);
 		}
 	}
 }

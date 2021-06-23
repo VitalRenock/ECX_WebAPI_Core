@@ -46,6 +46,8 @@ namespace ECX_WebAPI_Core
 			//services.AddSingleton<IServiceModelAUTH<UserClient>, UserClientService>();
 			services.AddSingleton<UserGlobalService>();
 			services.AddSingleton<UserClientService>();
+			services.AddSingleton<NoteGlobalService>();
+			services.AddSingleton<NoteClientService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

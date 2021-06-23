@@ -33,7 +33,7 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 				IsPublic = (bool)dataRecord["Public"],
 				ReviewState = (string)dataRecord["StateReview"],
 				ReviewCommentary = dataRecord["CommentaryReview"] is DBNull ? null : (string)dataRecord["CommentaryReview"],
-				ParentNote_Id = dataRecord["ParentNote_ID"] is DBNull ? 0 : (int)dataRecord["ParentNote_ID"],
+				ParentNote_Id = dataRecord["ParentNote_ID"] is DBNull ? null : (int)dataRecord["ParentNote_ID"],
 				User_Id = (int)dataRecord["User_ID"]
 			};
 		}

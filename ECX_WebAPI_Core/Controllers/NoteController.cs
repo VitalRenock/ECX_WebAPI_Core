@@ -18,10 +18,14 @@ namespace ECX_WebAPI_Core.Controllers
 	{
 		private readonly NoteClientService noteClientService;
 
+		#region Constructor
+		
 		public NoteController(NoteClientService noteClientService)
 		{
 			this.noteClientService = noteClientService;
-		}
+		} 
+
+		#endregion
 
 		[HttpPost]
 		[Route("Create")]

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+		<!-- Ajout de la dernière version de C# pour les ternaires DBNULL -->
+		<LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

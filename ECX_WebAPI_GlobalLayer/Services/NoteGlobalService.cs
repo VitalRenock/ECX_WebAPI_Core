@@ -38,7 +38,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			Command command = new Command("ECX_Delete_Note", true);
 			command.AddParameter("note_id", id);
 
-			return connection.ExecuteNonQuery(command) == 1;
+			return connection.ExecuteNonQuery(command) != 0;
 		}
 
 		public IEnumerable<NoteGlobal> GetAllNotes()

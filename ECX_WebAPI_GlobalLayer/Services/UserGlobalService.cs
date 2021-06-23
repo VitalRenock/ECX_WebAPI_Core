@@ -78,12 +78,13 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			Command command = new Command("ECX_Delete_User", true);
 			command.AddParameter("id", id);
 
-			return connection.ExecuteNonQuery(command) == 1;
+			return connection.ExecuteNonQuery(command) != 0;
 		}
 
 		public IEnumerable<UserGlobal> GetAllUsers()
 		{
 			Command command = new Command("SELECT * FROM ECX_View_AllUsers", false);
+
 			return connection.ExecuteReader(command, u => u.ToUserGlobal());
 		}
 

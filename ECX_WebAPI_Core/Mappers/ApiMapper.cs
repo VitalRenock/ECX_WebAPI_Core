@@ -42,11 +42,8 @@ namespace ECX_WebAPI_Core.Mappers
 		internal static NoteClient ToNoteClient(this FormCreateNote form)
 		{
 			return new NoteClient(
-				form.Id, 
 				form.Title, 
 				form.IsPublic, 
-				form.ReviewState, 
-				form.ReviewCommentary, 
 				form.ParentNote_Id, 
 				form.User_Id
 				);

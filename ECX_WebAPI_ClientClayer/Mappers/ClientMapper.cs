@@ -104,5 +104,31 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 		}
 
 		#endregion
+
+		#region Role Mapper
+
+		internal static RoleGlobal ToRoleGlobal(this RoleClient role)
+		{
+			return new RoleGlobal()
+			{
+				Id = role.Id,
+				Name = role.Name,
+				Color = role.Color,
+				Description = role.Description
+			};
+		}
+
+		internal static RoleClient ToRoleClient(this RoleGlobal role)
+		{
+			return new RoleClient
+			(
+				role.Id,
+				role.Name,
+				role.Color,
+				role.Description
+			);
+		}
+
+		#endregion
 	}
 }

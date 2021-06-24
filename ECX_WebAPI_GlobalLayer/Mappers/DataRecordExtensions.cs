@@ -10,6 +10,8 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 	internal static class DataRecordExtensions
 	{
 		// User
+		#region User
+
 		internal static UserGlobal ToUserGlobal(this IDataRecord dataRecord)
 		{
 			return new UserGlobal()
@@ -23,7 +25,11 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 			};
 		}
 
+		#endregion
+
 		// Note
+		#region Note
+		
 		internal static NoteGlobal ToNoteGlobal(this IDataRecord dataRecord)
 		{
 			return new NoteGlobal()
@@ -38,7 +44,11 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 			};
 		}
 
+		#endregion
+
 		// Component
+		#region Component
+		
 		internal static ComponentGlobal ToComponentGlobal(this IDataRecord dataRecord)
 		{
 			return new ComponentGlobal()
@@ -53,5 +63,22 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 				User_Id = (int)dataRecord["User_ID"]
 			};
 		}
+
+		#endregion
+
+		#region Role
+
+		internal static RoleGlobal ToRoleGlobal(this IDataRecord dataRecord)
+		{
+			return new RoleGlobal()
+			{
+				Id = (int)dataRecord["ID"],
+				Name = (string)dataRecord["Name"],
+				Color = dataRecord["Color"] is DBNull ? null : (string)dataRecord["Color"],
+				Description = dataRecord["Description"] is DBNull ? null : (string)dataRecord["Description"]
+			};
+		}
+
+		#endregion
 	}
 }

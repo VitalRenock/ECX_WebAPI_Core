@@ -7,6 +7,7 @@ using ECX_WebAPI_ClientClayer.Models;
 using ECX_WebAPI_Core.Models;
 using ECX_WebAPI_Core.Models.FormComponent;
 using ECX_WebAPI_Core.Models.FormsNote;
+using ECX_WebAPI_Core.Models.FormsRole;
 
 namespace ECX_WebAPI_Core.Mappers
 {
@@ -84,6 +85,29 @@ namespace ECX_WebAPI_Core.Mappers
 				form.Short,
 				form.Description,
 				form.Url
+				);
+		}
+
+		#endregion
+
+		#region Role Mappers
+
+		internal static RoleClient ToRoleClient(this FormCreateRole form)
+		{
+			return new RoleClient(
+				form.Name,
+				form.Color,
+				form.Description
+				);
+		}
+
+		internal static RoleClient ToRoleClient(this FormUpdateRole form)
+		{
+			return new RoleClient(
+				form.Id,
+				form.Name,
+				form.Color,
+				form.Description
 				);
 		}
 

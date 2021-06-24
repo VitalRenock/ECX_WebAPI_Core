@@ -44,12 +44,22 @@ namespace ECX_WebAPI_Core
 			services.AddSingleton(connection => new Connection(SqlClientFactory.Instance, @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ECX_Database;Integrated Security=True;"));
 			//services.AddSingleton<IServiceModelAUTH<UserGlobal>, UserGlobalService>();
 			//services.AddSingleton<IServiceModelAUTH<UserClient>, UserClientService>();
+
+			// User Service Injection
 			services.AddSingleton<UserGlobalService>();
 			services.AddSingleton<UserClientService>();
+
+			// Note Service Injection
 			services.AddSingleton<NoteGlobalService>();
 			services.AddSingleton<NoteClientService>();
+
+			// Component Service Injection
 			services.AddSingleton<ComponentGlobalService>();
 			services.AddSingleton<ComponentClientService>();
+
+			// Role Service Injection
+			services.AddSingleton<RoleGlobalService>();
+			services.AddSingleton<RoleClientService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

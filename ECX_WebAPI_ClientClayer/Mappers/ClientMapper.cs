@@ -70,5 +70,39 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 		}
 
 		#endregion
+
+		#region Component Mapper
+
+		internal static ComponentGlobal ToComponentGlobal(this ComponentClient component)
+		{
+			return new ComponentGlobal()
+			{
+				Id = component.Id,
+				Title = component.Title,
+				Content = component.Content,
+				Short = component.Short,
+				Description = component.Description,
+				Url = component.Url,
+				IsPublic = component.IsPublic,
+				User_Id = component.User_Id
+			};
+		}
+
+		internal static ComponentClient ToComponentClient(this ComponentGlobal component)
+		{
+			return new ComponentClient
+			(
+				component.Id,
+				component.Title,
+				component.Content,
+				component.Short,
+				component.Description,
+				component.Url,
+				component.IsPublic,
+				component.User_Id
+			);
+		}
+
+		#endregion
 	}
 }

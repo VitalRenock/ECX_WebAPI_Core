@@ -39,6 +39,12 @@ namespace ECX_WebAPI_ClientClayer.Models
 			User_Id = user_Id;
 		}
 
+		public NoteClient(int id, string title)
+		{
+			Id = id;
+			Title = title;
+		}
+
 		#endregion
 	}
 }

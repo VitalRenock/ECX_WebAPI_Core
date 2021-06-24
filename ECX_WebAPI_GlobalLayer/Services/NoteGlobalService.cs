@@ -22,15 +22,24 @@ namespace ECX_WebAPI_GlobalLayer.Services
 
 		#endregion
 
-		public int Create(NoteGlobal item)
+		public int Create(NoteGlobal note)
 		{
 			Command command = new Command("ECX_Create_Note", true);
-			command.AddParameter("title", item.Title);
-			command.AddParameter("public", item.IsPublic);
-			command.AddParameter("parentNote_ID", item.ParentNote_Id);
-			command.AddParameter("User_ID", item.User_Id);
+			command.AddParameter("title", note.Title);
+			command.AddParameter("public", note.IsPublic);
+			command.AddParameter("parentNote_ID", note.ParentNote_Id);
+			command.AddParameter("User_ID", note.User_Id);
 
 			return connection.ExecuteNonQuery(command);
+		}
+
+		public bool Update(NoteGlobal note)
+		{
+			Command command = new Command("ECX_Update_Note", true);
+			command.AddParameter("id", note.Id);
+			command.AddParameter("title", note.Title);
+
+			return connection.ExecuteNonQuery(command) != 0;
 		}
 
 		public bool Delete(int id)
@@ -62,6 +71,15 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			command.AddParameter("user_id", id);
 
 			return connection.ExecuteReader(command, (datarecord) => datarecord.ToNoteGlobal());
+		}
+
+		public bool SetVisibility(int id, bool isPublic)
+		{
+			Command command = new Command("ECX_SetVisibility_Note", true);
+			command.AddParameter("note_id", id);
+			command.AddParameter("isPublic", isPublic);
+
+			return connection.ExecuteNonQuery(command) != 0;
 		}
 	}
 }

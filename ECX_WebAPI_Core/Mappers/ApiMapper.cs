@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using ECX_WebAPI_ClientClayer.Models;
 using ECX_WebAPI_Core.Models;
+using ECX_WebAPI_Core.Models.FormComponent;
 using ECX_WebAPI_Core.Models.FormsNote;
 
 namespace ECX_WebAPI_Core.Mappers
@@ -46,6 +47,43 @@ namespace ECX_WebAPI_Core.Mappers
 				form.IsPublic, 
 				form.ParentNote_Id, 
 				form.User_Id
+				);
+		}
+
+		internal static NoteClient ToNoteClient(this FormUpdateNote form)
+		{
+			return new NoteClient(
+				form.Id,	
+				form.Title
+				);
+		}
+
+		#endregion
+
+		#region Component Mappers
+
+		internal static ComponentClient ToComponentClient(this FormCreateComponent form)
+		{
+			return new ComponentClient(
+				form.Title,
+				form.Content,
+				form.Short,
+				form.Description,
+				form.Url,
+				form.IsPublic,
+				form.User_Id
+				);
+		}
+
+		internal static ComponentClient ToComponentClient(this FormUpdateComponent form)
+		{
+			return new ComponentClient(
+				form.Id,
+				form.Title,
+				form.Content,
+				form.Short,
+				form.Description,
+				form.Url
 				);
 		}
 

@@ -9,9 +9,9 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 {
 	internal static class DataRecordExtensions
 	{
+		// User
 		internal static UserGlobal ToUserGlobal(this IDataRecord dataRecord)
 		{
-			// UserGlobal
 			return new UserGlobal()
 			{
 				Id = (int)dataRecord["ID"],
@@ -23,9 +23,9 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 			};
 		}
 
+		// Note
 		internal static NoteGlobal ToNoteGlobal(this IDataRecord dataRecord)
 		{
-			// UserGlobal
 			return new NoteGlobal()
 			{
 				Id = (int)dataRecord["ID"],
@@ -34,6 +34,22 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 				ReviewState = (string)dataRecord["StateReview"],
 				ReviewCommentary = dataRecord["CommentaryReview"] is DBNull ? null : (string)dataRecord["CommentaryReview"],
 				ParentNote_Id = dataRecord["ParentNote_ID"] is DBNull ? null : (int)dataRecord["ParentNote_ID"],
+				User_Id = (int)dataRecord["User_ID"]
+			};
+		}
+
+		// Component
+		internal static ComponentGlobal ToComponentGlobal(this IDataRecord dataRecord)
+		{
+			return new ComponentGlobal()
+			{
+				Id = (int)dataRecord["ID"],
+				Title = (string)dataRecord["Title"],
+				Content = dataRecord["Content"] is DBNull ? null : (string)dataRecord["Content"],
+				Short = dataRecord["Short"] is DBNull ? null : (string)dataRecord["Short"],
+				Description = dataRecord["Description"] is DBNull ? null : (string)dataRecord["Description"],
+				Url = dataRecord["Url"] is DBNull ? null : (string)dataRecord["Url"],
+				IsPublic = (bool)dataRecord["Public"],
 				User_Id = (int)dataRecord["User_ID"]
 			};
 		}

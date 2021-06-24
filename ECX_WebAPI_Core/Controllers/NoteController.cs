@@ -35,6 +35,16 @@ namespace ECX_WebAPI_Core.Controllers
 			return Ok(id);
 		}
 
+		[HttpPut]
+		[Route("Update")]
+		public IActionResult Update([FromBody] FormUpdateNote form)
+		{
+			if (noteClientService.Update(form.ToNoteClient()))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
 		[HttpDelete]
 		[Route("Delete/{id}")]
 		public IActionResult Delete(int id)
@@ -64,6 +74,16 @@ namespace ECX_WebAPI_Core.Controllers
 		public IEnumerable<NoteClient> GetPublicUserNotes(int id)
 		{
 			return noteClientService.GetPublicUserNotes(id);
+		}
+
+		[HttpPut]
+		[Route("SetVisibility")]
+		public IActionResult SetVisibility([FromBody] FormSetVisibilityNote form)
+		{
+			if (noteClientService.SetVisibility(form.id, form.isPublic))
+				return Ok();
+			else
+				return BadRequest();
 		}
 	}
 }

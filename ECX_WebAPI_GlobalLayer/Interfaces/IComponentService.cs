@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ECX_WebAPI_GlobalLayer.Interfaces
+{
+	public interface IComponentService<TModel>
+	{
+		bool Create(TModel component);
+		bool Update(TModel component);
+		bool Delete(int id);
+		IEnumerable<TModel> GetAllComponents();
+		IEnumerable<TModel> GetAllUserComponents(int id);
+		IEnumerable<TModel> GetPublicUserComponents(int id);
+		bool SetVisibility(int id, bool isPublic);
+	}
+}

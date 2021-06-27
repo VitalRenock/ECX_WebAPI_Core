@@ -41,6 +41,9 @@ namespace ECX_WebAPI_Core
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "ECX_WebAPI_Core", Version = "v1" });
 			});
 
+			// On Permet les Cross-Origin
+			services.AddCors();
+
 			services.AddSingleton(connection => new Connection(SqlClientFactory.Instance, @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ECX_Database;Integrated Security=True;"));
 			//services.AddSingleton<IServiceModelAUTH<UserGlobal>, UserGlobalService>();
 			//services.AddSingleton<IServiceModelAUTH<UserClient>, UserClientService>();
@@ -72,7 +75,10 @@ namespace ECX_WebAPI_Core
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ECX_WebAPI_Core v1"));
 			}
 
-			//app.UseHttpsRedirection();
+			// On autorise toutes sortes de requêtes (Post, Put, ...) (Header: Bearer, Token) (Origin: totu serveur)
+			app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
+
+			app.UseHttpsRedirection();
 
 			app.UseRouting();
 

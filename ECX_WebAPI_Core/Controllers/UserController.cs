@@ -19,7 +19,6 @@ namespace ECX_WebAPI_Core.Controllers
 
 		#region Constructor
 		
-		//public UserController(IServiceModelAUTH<UserClient> userClientService)
 		public UserController(UserClientService userClientService)
 		{
 			this.userClientService = userClientService;

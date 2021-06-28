@@ -48,6 +48,7 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 			{
 				Id = note.Id,
 				Title = note.Title,
+				Category = note.Category,
 				IsPublic = note.IsPublic,
 				ReviewState = note.ReviewState,
 				ReviewCommentary = note.ReviewCommentary,
@@ -60,7 +61,8 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 		{
 			return new NoteClient(
 				note.Id, 
-				note.Title, 
+				note.Title,
+				note.Category,
 				note.IsPublic, 
 				note.ReviewState, 
 				note.ReviewCommentary, 

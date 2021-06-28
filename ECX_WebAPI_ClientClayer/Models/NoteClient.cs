@@ -10,6 +10,7 @@ namespace ECX_WebAPI_ClientClayer.Models
 		
 		public int Id { get; set; }
 		public string Title { get; set; }
+		public string Category { get; set; }
 		public bool IsPublic { get; set; }
 		public string ReviewState { get; set; }
 		public string ReviewCommentary { get; set; }
@@ -20,10 +21,11 @@ namespace ECX_WebAPI_ClientClayer.Models
 
 		#region Constructors
 
-		public NoteClient(int id, string title, bool isPublic, string reviewState, string reviewCommentary, int? parentNote_Id, int user_Id)
+		public NoteClient(int id, string title, string category, bool isPublic, string reviewState, string reviewCommentary, int? parentNote_Id, int user_Id)
 		{
 			Id = id;
 			Title = title;
+			Category = category;
 			IsPublic = isPublic;
 			ReviewState = reviewState;
 			ReviewCommentary = reviewCommentary;
@@ -31,18 +33,20 @@ namespace ECX_WebAPI_ClientClayer.Models
 			User_Id = user_Id;
 		}
 
-		public NoteClient(string title, bool isPublic, int? parentNote_Id, int user_Id)
+		public NoteClient(string title, string category, bool isPublic, int? parentNote_Id, int user_Id)
 		{
 			Title = title;
+			Category = category;
 			IsPublic = isPublic;
 			ParentNote_Id = parentNote_Id;
 			User_Id = user_Id;
 		}
 
-		public NoteClient(int id, string title)
+		public NoteClient(int id, string title, string category)
 		{
 			Id = id;
 			Title = title;
+			Category = category;
 		}
 
 		#endregion

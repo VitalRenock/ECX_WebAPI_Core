@@ -13,6 +13,8 @@ namespace ECX_WebAPI_Core.Models.FormsNote
 		[Required]
 		public string Title { get; set; }
 		[Required]
+		public string Category { get; set; }
+		[Required]
 		public bool IsPublic { get; set; }
 		public int? ParentNote_Id { get; set; }
 		[Required]

@@ -9,7 +9,6 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 {
 	internal static class DataRecordExtensions
 	{
-		// User
 		#region User
 
 		internal static UserGlobal ToUserGlobal(this IDataRecord dataRecord)
@@ -27,7 +26,6 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 
 		#endregion
 
-		// Note
 		#region Note
 		
 		internal static NoteGlobal ToNoteGlobal(this IDataRecord dataRecord)
@@ -36,6 +34,7 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 			{
 				Id = (int)dataRecord["ID"],
 				Title = (string)dataRecord["Title"],
+				Category = (string)dataRecord["Category"],
 				IsPublic = (bool)dataRecord["Public"],
 				ReviewState = (string)dataRecord["StateReview"],
 				ReviewCommentary = dataRecord["CommentaryReview"] is DBNull ? null : (string)dataRecord["CommentaryReview"],
@@ -46,7 +45,6 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 
 		#endregion
 
-		// Component
 		#region Component
 		
 		internal static ComponentGlobal ToComponentGlobal(this IDataRecord dataRecord)

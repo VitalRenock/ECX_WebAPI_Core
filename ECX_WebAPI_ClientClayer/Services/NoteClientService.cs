@@ -56,5 +56,15 @@ namespace ECX_WebAPI_ClientClayer.Services
 		{
 			return noteGlobalService.SetVisibility(id, isPublic);
 		}
+
+		public IEnumerable<string> GetCategories()
+		{
+			return noteGlobalService.GetCategories();
+		}
+
+		public IEnumerable<NoteClient> GetPublicNotesByCategory(string category)
+		{
+			return noteGlobalService.GetPublicNotesByCategory(category).Select((n) => n.ToNoteClient());
+		}
 	}
 }

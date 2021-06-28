@@ -85,5 +85,19 @@ namespace ECX_WebAPI_Core.Controllers
 			else
 				return BadRequest();
 		}
+
+		[HttpGet]
+		[Route("GetCategories")]
+		public IEnumerable<string> GetCategories()
+		{
+			return noteClientService.GetCategories();
+		}
+
+		[HttpGet]
+		[Route("GetPublicNotesByCategory/{category}")]
+		public IEnumerable<NoteClient> GetPublicNotesByCategory(string category)
+		{
+			return noteClientService.GetPublicNotesByCategory(category);
+		}
 	}
 }

@@ -8,6 +8,7 @@ namespace ECX_WebAPI_GlobalLayer.Models
 	{
 		public int Id { get; set; }
 		public string Title { get; set; }
+		public string Category { get; set; }
 		public bool IsPublic { get; set; }
 		public string ReviewState { get; set; }
 		public string ReviewCommentary { get; set; }

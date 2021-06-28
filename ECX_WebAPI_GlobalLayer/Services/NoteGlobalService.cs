@@ -81,5 +81,20 @@ namespace ECX_WebAPI_GlobalLayer.Services
 
 			return connection.ExecuteNonQuery(command) != 0;
 		}
+
+		public IEnumerable<string> GetCategories()
+		{
+			Command command = new Command("SELECT * FROM ECX_View_AllCategories", false);
+
+			return connection.ExecuteReader(command, (datarecord) => datarecord["Category"].ToString());
+		}
+
+		public IEnumerable<NoteGlobal> GetPublicNotesByCategory(string category)
+		{
+			Command command = new Command("ECX_Get_PublicNotesByCategory", true);
+			command.AddParameter("category", category);
+
+			return connection.ExecuteReader(command, (datarecord) => datarecord.ToNoteGlobal());
+		}
 	}
 }

@@ -13,5 +13,7 @@ namespace ECX_WebAPI_GlobalLayer.Interfaces
 		IEnumerable<TModel> GetAllUserComponents(int id);
 		IEnumerable<TModel> GetPublicUserComponents(int id);
 		bool SetVisibility(int id, bool isPublic);
+		IEnumerable<TModel> GetComponentsByNote(int noteId);
+		IEnumerable<TModel> GetPublicComponentsByNote(int noteId);
 	}
 }

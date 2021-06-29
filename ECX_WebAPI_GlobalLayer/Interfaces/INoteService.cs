@@ -15,5 +15,6 @@ namespace ECX_WebAPI_GlobalLayer.Interfaces
 		bool SetVisibility(int id, bool isPublic);
 		IEnumerable<string> GetCategories();
 		IEnumerable<TModel> GetPublicNotesByCategory(string category);
+		TModel GetPublicNote(int id);
 	}
 }

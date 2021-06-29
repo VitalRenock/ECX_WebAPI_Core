@@ -26,6 +26,19 @@ namespace ECX_WebAPI_Core.Controllers
 
 		#endregion
 
+		#region GET Methods
+
+		[HttpGet]
+		[Route("GetAll")]
+		public IEnumerable<UserClient> GetUsers()
+		{
+			return userClientService.GetAllUsers();
+		}
+
+		#endregion
+
+		#region POST Methods
+
 		[HttpPost]
 		[Route("Register")]
 		public IActionResult Register([FromBody] FormRegister form)
@@ -53,6 +66,20 @@ namespace ECX_WebAPI_Core.Controllers
 				return BadRequest();
 		}
 
+		[HttpPost]
+		[Route("SetRole")]
+		public IActionResult SetRole([FromBody] FormSetRoleUser form)
+		{
+			if (userClientService.SetRole(form.User_Id, form.Role_Name))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
+		#endregion
+
+		#region PUT Methods
+
 		[HttpPut]
 		public IActionResult Update([FromBody] FormUpdateUser user)
 		{
@@ -61,6 +88,10 @@ namespace ECX_WebAPI_Core.Controllers
 			else
 				return BadRequest();
 		}
+
+		#endregion
+
+		#region DELETE Methods
 
 		[HttpDelete("{id}")]
 		public IActionResult Delete(int id)
@@ -71,21 +102,7 @@ namespace ECX_WebAPI_Core.Controllers
 				return BadRequest();
 		}
 
-		[HttpGet]
-		[Route("GetAll")]
-		public IEnumerable<UserClient> GetUsers()
-		{
-			return userClientService.GetAllUsers();
-		}
+		#endregion
 
-		[HttpPost]
-		[Route("SetRole")]
-		public IActionResult SetRole([FromBody] FormSetRoleUser form)
-		{
-			if (userClientService.SetRole(form.User_Id, form.Role_Name))
-				return Ok();
-			else
-				return BadRequest();
-		} 
 	}
 }

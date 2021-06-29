@@ -27,35 +27,8 @@ namespace ECX_WebAPI_Core.Controllers
 
 		#endregion
 
-		[HttpPost]
-		[Route("Create")]
-		public IActionResult Create([FromBody] FormCreateComponent component)
-		{
-			if (service.Create(component.ToComponentClient()))
-				return Ok();
-			else return BadRequest();
-		}
-
-		[HttpPut]
-		[Route("Update")]
-		public IActionResult Update([FromBody] FormUpdateComponent component)
-		{
-			if (service.Update(component.ToComponentClient()))
-				return Ok();
-			else
-				return BadRequest();
-		}
-
-		[HttpDelete]
-		[Route("Delete/{id}")]
-		public IActionResult Delete(int id)
-		{
-			if (service.Delete(id))
-				return Ok();
-			else
-				return BadRequest();
-		}
-
+		#region GET Methods
+		
 		[HttpGet]
 		[Route("GetAllComponents")]
 		public IEnumerable<ComponentClient> GetAllComponents()
@@ -77,6 +50,47 @@ namespace ECX_WebAPI_Core.Controllers
 			return service.GetPublicUserComponents(id);
 		}
 
+		[HttpGet]
+		[Route("GetComponentsByNote/{noteId}")]
+		public IEnumerable<ComponentClient> GetComponentsByNote(int noteId)
+		{
+			return service.GetComponentsByNote(noteId);
+		}
+
+		[HttpGet]
+		[Route("GetPublicComponentsByNote/{noteId}")]
+		public IEnumerable<ComponentClient> GetPublicComponentsByNote(int noteId)
+		{
+			return service.GetPublicComponentsByNote(noteId);
+		}
+
+		#endregion
+
+		#region POST Methods
+		
+		[HttpPost]
+		[Route("Create")]
+		public IActionResult Create([FromBody] FormCreateComponent component)
+		{
+			if (service.Create(component.ToComponentClient()))
+				return Ok();
+			else return BadRequest();
+		}
+
+		#endregion
+
+		#region PUT Methods
+		
+		[HttpPut]
+		[Route("Update")]
+		public IActionResult Update([FromBody] FormUpdateComponent component)
+		{
+			if (service.Update(component.ToComponentClient()))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
 		[HttpPut]
 		[Route("SetVisibility")]
 		public IActionResult SetVisibility([FromBody] FormSetVisibilityComponent form)
@@ -86,6 +100,22 @@ namespace ECX_WebAPI_Core.Controllers
 			else
 				return BadRequest();
 		}
+
+		#endregion
+
+		#region DELETE Methods
+		
+		[HttpDelete]
+		[Route("Delete/{id}")]
+		public IActionResult Delete(int id)
+		{
+			if (service.Delete(id))
+				return Ok();
+			else
+				return BadRequest();
+		} 
+
+		#endregion
 
 	}
 }

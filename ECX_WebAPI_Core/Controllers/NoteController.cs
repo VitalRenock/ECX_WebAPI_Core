@@ -23,37 +23,11 @@ namespace ECX_WebAPI_Core.Controllers
 		public NoteController(NoteClientService noteClientService)
 		{
 			this.noteClientService = noteClientService;
-		} 
+		}
 
 		#endregion
 
-		[HttpPost]
-		[Route("Create")]
-		public IActionResult Create([FromBody] FormCreateNote form)
-		{
-			int id = noteClientService.Create(form.ToNoteClient());
-			return Ok(id);
-		}
-
-		[HttpPut]
-		[Route("Update")]
-		public IActionResult Update([FromBody] FormUpdateNote form)
-		{
-			if (noteClientService.Update(form.ToNoteClient()))
-				return Ok();
-			else
-				return BadRequest();
-		}
-
-		[HttpDelete]
-		[Route("Delete/{id}")]
-		public IActionResult Delete(int id)
-		{
-			if (noteClientService.Delete(id))
-				return Ok();
-			else
-				return BadRequest();
-		}
+		#region GET Methods
 
 		[HttpGet]
 		[Route("GetAllNotes")]
@@ -76,16 +50,6 @@ namespace ECX_WebAPI_Core.Controllers
 			return noteClientService.GetPublicUserNotes(id);
 		}
 
-		[HttpPut]
-		[Route("SetVisibility")]
-		public IActionResult SetVisibility([FromBody] FormSetVisibilityNote form)
-		{
-			if (noteClientService.SetVisibility(form.id, form.isPublic))
-				return Ok();
-			else
-				return BadRequest();
-		}
-
 		[HttpGet]
 		[Route("GetCategories")]
 		public IEnumerable<string> GetCategories()
@@ -99,5 +63,65 @@ namespace ECX_WebAPI_Core.Controllers
 		{
 			return noteClientService.GetPublicNotesByCategory(category);
 		}
+
+		[HttpGet]
+		[Route("GetPublicNote/{id}")]
+		public NoteClient GetPublicNote(int id)
+		{
+			return noteClientService.GetPublicNote(id);
+		}
+
+		#endregion
+
+		#region POST Methods
+
+		[HttpPost]
+		[Route("Create")]
+		public IActionResult Create([FromBody] FormCreateNote form)
+		{
+			int id = noteClientService.Create(form.ToNoteClient());
+			return Ok(id);
+		}
+
+		#endregion
+
+		#region PUT Methods
+
+		[HttpPut]
+		[Route("Update")]
+		public IActionResult Update([FromBody] FormUpdateNote form)
+		{
+			if (noteClientService.Update(form.ToNoteClient()))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
+		[HttpPut]
+		[Route("SetVisibility")]
+		public IActionResult SetVisibility([FromBody] FormSetVisibilityNote form)
+		{
+			if (noteClientService.SetVisibility(form.id, form.isPublic))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
+		#endregion
+
+		#region DELETE Methods
+
+		[HttpDelete]
+		[Route("Delete/{id}")]
+		public IActionResult Delete(int id)
+		{
+			if (noteClientService.Delete(id))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
+		#endregion
+
 	}
 }

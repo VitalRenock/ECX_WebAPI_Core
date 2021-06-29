@@ -43,6 +43,16 @@ namespace ECX_WebAPI_ClientClayer.Services
 			return componentGlobalService.GetAllUserComponents(id).Select(c => c.ToComponentClient());
 		}
 
+		public IEnumerable<ComponentClient> GetComponentsByNote(int noteId)
+		{
+			return componentGlobalService.GetComponentsByNote(noteId).Select(c => c.ToComponentClient());
+		}
+
+		public IEnumerable<ComponentClient> GetPublicComponentsByNote(int noteId)
+		{
+			return componentGlobalService.GetPublicComponentsByNote(noteId).Select(c => c.ToComponentClient());
+		}
+
 		public IEnumerable<ComponentClient> GetPublicUserComponents(int id)
 		{
 			return componentGlobalService.GetPublicUserComponents(id).Select(c => c.ToComponentClient());

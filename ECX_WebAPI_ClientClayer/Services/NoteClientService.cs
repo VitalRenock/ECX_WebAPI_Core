@@ -66,5 +66,10 @@ namespace ECX_WebAPI_ClientClayer.Services
 		{
 			return noteGlobalService.GetPublicNotesByCategory(category).Select((n) => n.ToNoteClient());
 		}
+
+		public NoteClient GetPublicNote(int id)
+		{
+			return noteGlobalService.GetPublicNote(id).ToNoteClient();
+		}
 	}
 }

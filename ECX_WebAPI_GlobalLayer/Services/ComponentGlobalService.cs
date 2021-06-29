@@ -89,5 +89,20 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			return connection.ExecuteNonQuery(command) != 0;
 		}
 
+		public IEnumerable<ComponentGlobal> GetComponentsByNote(int noteId)
+		{
+			Command command = new Command("ECX_Get_ComponentsByNote", true);
+			command.AddParameter("note_id", noteId);
+
+			return connection.ExecuteReader(command, (datarecord) => datarecord.ToComponentGlobal());
+		}
+
+		public IEnumerable<ComponentGlobal> GetPublicComponentsByNote(int noteId)
+		{
+			Command command = new Command("ECX_Get_PublicComponentsByNote", true);
+			command.AddParameter("note_id", noteId);
+
+			return connection.ExecuteReader(command, (datarecord) => datarecord.ToComponentGlobal());
+		}
 	}
 }

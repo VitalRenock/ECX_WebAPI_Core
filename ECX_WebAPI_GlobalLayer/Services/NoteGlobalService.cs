@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 using ECX_WebAPI_GlobalLayer.Interfaces;
@@ -95,6 +96,14 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			command.AddParameter("category", category);
 
 			return connection.ExecuteReader(command, (datarecord) => datarecord.ToNoteGlobal());
+		}
+
+		public NoteGlobal GetPublicNote(int id)
+		{
+			Command command = new Command("ECX_Get_PublicNote", true);
+			command.AddParameter("id", id);
+
+			return connection.ExecuteReader(command, (datarecord) => datarecord.ToNoteGlobal()).SingleOrDefault();
 		}
 	}
 }

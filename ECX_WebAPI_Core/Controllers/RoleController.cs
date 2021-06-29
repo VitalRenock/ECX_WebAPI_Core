@@ -27,35 +27,7 @@ namespace ECX_WebAPI_Core.Controllers
 
 		#endregion
 
-		[HttpPost]
-		[Route("Create")]
-		public IActionResult Create([FromBody] FormCreateRole role)
-		{
-			if (service.Create(role.ToRoleClient()))
-				return Ok();
-			else
-				return BadRequest();
-		}
-
-		[HttpPut]
-		[Route("Update")]
-		public IActionResult Update([FromBody] FormUpdateRole role)
-		{
-			if (service.Update(role.ToRoleClient()))
-				return Ok();
-			else
-				return BadRequest();
-		}
-
-		[HttpDelete]
-		[Route("Delete/{id}")]
-		public IActionResult Delete(int id)
-		{
-			if (service.Delete(id))
-				return Ok();
-			else
-				return BadRequest();
-		}
+		#region GET Methods
 
 		[HttpGet]
 		[Route("Get/{id}")]
@@ -70,5 +42,50 @@ namespace ECX_WebAPI_Core.Controllers
 		{
 			return service.GetAll();
 		}
+
+		#endregion
+
+		#region POST Methods
+
+		[HttpPost]
+		[Route("Create")]
+		public IActionResult Create([FromBody] FormCreateRole role)
+		{
+			if (service.Create(role.ToRoleClient()))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
+		#endregion
+
+		#region PUT Methods
+
+		[HttpPut]
+		[Route("Update")]
+		public IActionResult Update([FromBody] FormUpdateRole role)
+		{
+			if (service.Update(role.ToRoleClient()))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
+		#endregion
+
+		#region DELETE Methods
+
+		[HttpDelete]
+		[Route("Delete/{id}")]
+		public IActionResult Delete(int id)
+		{
+			if (service.Delete(id))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
+		#endregion
+
 	}
 }

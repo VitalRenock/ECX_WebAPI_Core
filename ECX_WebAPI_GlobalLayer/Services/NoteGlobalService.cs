@@ -27,6 +27,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 		{
 			Command command = new Command("ECX_Create_Note", true);
 			command.AddParameter("title", note.Title);
+			command.AddParameter("category", note.Category);
 			command.AddParameter("public", note.IsPublic);
 			command.AddParameter("parentNote_ID", note.ParentNote_Id);
 			command.AddParameter("User_ID", note.User_Id);

@@ -23,19 +23,7 @@ namespace ECX_WebAPI_ClientClayer.Services
 
 		#endregion
 
-		public int Create(NoteClient note)
-		{
-			return noteGlobalService.Create(note.ToNoteGlobal());
-		}
-		public bool Update(NoteClient note)
-		{
-			return noteGlobalService.Update(note.ToNoteGlobal());
-		}
-
-		public bool Delete(int id)
-		{
-			return noteGlobalService.Delete(id);
-		}
+		#region GET Methods
 
 		public IEnumerable<NoteClient> GetAllNotes()
 		{
@@ -52,11 +40,6 @@ namespace ECX_WebAPI_ClientClayer.Services
 			return noteGlobalService.GetPublicUserNotes(id).Select((n) => n.ToNoteClient());
 		}
 
-		public bool SetVisibility(int id, bool isPublic)
-		{
-			return noteGlobalService.SetVisibility(id, isPublic);
-		}
-
 		public IEnumerable<string> GetCategories()
 		{
 			return noteGlobalService.GetCategories();
@@ -71,5 +54,40 @@ namespace ECX_WebAPI_ClientClayer.Services
 		{
 			return noteGlobalService.GetPublicNote(id).ToNoteClient();
 		}
+
+		#endregion
+
+		#region POST Methods
+
+		public int Create(NoteClient note)
+		{
+			return noteGlobalService.Create(note.ToNoteGlobal());
+		}
+
+		#endregion
+
+		#region PUT Methods
+
+		public bool Update(NoteClient note)
+		{
+			return noteGlobalService.Update(note.ToNoteGlobal());
+		}
+
+		public bool SetVisibility(int id, bool isPublic)
+		{
+			return noteGlobalService.SetVisibility(id, isPublic);
+		}
+
+		#endregion
+
+		#region DELETE Methods
+
+		public bool Delete(int id)
+		{
+			return noteGlobalService.Delete(id);
+		}
+
+		#endregion
+
 	}
 }

@@ -64,23 +64,44 @@ namespace ECX_WebAPI_Core.Controllers
 			return service.GetPublicComponentsByNote(noteId);
 		}
 
+		[HttpGet]
+		[Route("GetUserComponent/{compoId}")]
+		public ComponentClient GetUserComponent(int compoId)
+		{
+			return service.GetUserComponent(compoId);
+		}
+
 		#endregion
 
 		#region POST Methods
-		
+
 		[HttpPost]
 		[Route("Create")]
 		public IActionResult Create([FromBody] FormCreateComponent component)
 		{
-			if (service.Create(component.ToComponentClient()))
-				return Ok();
+			int newId = service.Create(component.ToComponentClient());
+			
+			if (newId > 0)
+				return Ok(newId);
 			else return BadRequest();
+		}
+
+		[HttpPost]
+		[Route("AddComponentToNote")]
+		public IActionResult AddComponentToNote([FromBody] FormAddCompoToNote form)
+		{
+			int newId = service.AddComponentToNote(form.NoteId, form.CompoId);
+
+			if (newId > 0)
+				return Ok(newId);
+			else
+				return BadRequest();
 		}
 
 		#endregion
 
 		#region PUT Methods
-		
+
 		[HttpPut]
 		[Route("Update")]
 		public IActionResult Update([FromBody] FormUpdateComponent component)

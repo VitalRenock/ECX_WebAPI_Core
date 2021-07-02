@@ -19,38 +19,11 @@ namespace ECX_WebAPI_GlobalLayer.Services
 		public NoteGlobalService(Connection connection)
 		{
 			this.connection = connection;
-		} 
+		}
 
 		#endregion
 
-		public int Create(NoteGlobal note)
-		{
-			Command command = new Command("ECX_Create_Note", true);
-			command.AddParameter("title", note.Title);
-			command.AddParameter("category", note.Category);
-			command.AddParameter("public", note.IsPublic);
-			command.AddParameter("parentNote_ID", note.ParentNote_Id);
-			command.AddParameter("User_ID", note.User_Id);
-
-			return connection.ExecuteNonQuery(command);
-		}
-
-		public bool Update(NoteGlobal note)
-		{
-			Command command = new Command("ECX_Update_Note", true);
-			command.AddParameter("id", note.Id);
-			command.AddParameter("title", note.Title);
-
-			return connection.ExecuteNonQuery(command) != 0;
-		}
-
-		public bool Delete(int id)
-		{
-			Command command = new Command("ECX_Delete_Note", true);
-			command.AddParameter("note_id", id);
-
-			return connection.ExecuteNonQuery(command) != 0;
-		}
+		#region GET Methods
 
 		public IEnumerable<NoteGlobal> GetAllNotes()
 		{
@@ -75,15 +48,6 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			return connection.ExecuteReader(command, (datarecord) => datarecord.ToNoteGlobal());
 		}
 
-		public bool SetVisibility(int id, bool isPublic)
-		{
-			Command command = new Command("ECX_SetVisibility_Note", true);
-			command.AddParameter("note_id", id);
-			command.AddParameter("isPublic", isPublic);
-
-			return connection.ExecuteNonQuery(command) != 0;
-		}
-
 		public IEnumerable<string> GetCategories()
 		{
 			Command command = new Command("SELECT * FROM ECX_View_AllCategories", false);
@@ -106,5 +70,59 @@ namespace ECX_WebAPI_GlobalLayer.Services
 
 			return connection.ExecuteReader(command, (datarecord) => datarecord.ToNoteGlobal()).SingleOrDefault();
 		}
+
+		#endregion
+
+		#region POST Methods
+
+		public int Create(NoteGlobal note)
+		{
+			Command command = new Command("ECX_Create_Note", true);
+			command.AddParameter("title", note.Title);
+			command.AddParameter("category", note.Category);
+			command.AddParameter("public", note.IsPublic);
+			command.AddParameter("parentNote_ID", note.ParentNote_Id);
+			command.AddParameter("User_ID", note.User_Id);
+
+			return (int)connection.ExecuteScalar(command);
+		}
+
+		#endregion
+
+		#region PUT Methods
+
+		public bool Update(NoteGlobal note)
+		{
+			Command command = new Command("ECX_Update_Note", true);
+			command.AddParameter("id", note.Id);
+			command.AddParameter("category", note.Category);
+			command.AddParameter("title", note.Title);
+
+			return connection.ExecuteNonQuery(command) != 0;
+		}
+
+		public bool SetVisibility(int id, bool isPublic)
+		{
+			Command command = new Command("ECX_SetVisibility_Note", true);
+			command.AddParameter("note_id", id);
+			command.AddParameter("isPublic", isPublic);
+
+			return connection.ExecuteNonQuery(command) != 0;
+		}
+
+		#endregion
+
+		#region DELETE Methods
+
+		public bool Delete(int id)
+		{
+			Command command = new Command("ECX_Delete_Note", true);
+			command.AddParameter("note_id", id);
+
+			return connection.ExecuteNonQuery(command) != 0;
+		}
+
+		#endregion
+
 	}
 }

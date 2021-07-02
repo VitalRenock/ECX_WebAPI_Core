@@ -19,19 +19,11 @@ namespace ECX_WebAPI_ClientClayer.Services
 		public ComponentClientService(ComponentGlobalService componentGlobalService)
 		{
 			this.componentGlobalService = componentGlobalService;
-		} 
+		}
 
 		#endregion
 
-		public bool Create(ComponentClient component)
-		{
-			return componentGlobalService.Create(component.ToComponentGlobal());
-		}
-
-		public bool Delete(int id)
-		{
-			return componentGlobalService.Delete(id);
-		}
+		#region GET Methods
 
 		public IEnumerable<ComponentClient> GetAllComponents()
 		{
@@ -58,6 +50,29 @@ namespace ECX_WebAPI_ClientClayer.Services
 			return componentGlobalService.GetPublicUserComponents(id).Select(c => c.ToComponentClient());
 		}
 
+		public ComponentClient GetUserComponent(int compo_id)
+		{
+			return componentGlobalService.GetUserComponent(compo_id).ToComponentClient();
+		}
+
+		#endregion
+
+		#region POST Methods
+
+		public int Create(ComponentClient component)
+		{
+			return componentGlobalService.Create(component.ToComponentGlobal());
+		}
+		
+		public int AddComponentToNote(int noteId, int compoId)
+		{
+			return componentGlobalService.AddComponentToNote(noteId, compoId);
+		}
+
+		#endregion
+
+		#region PUT Methods
+		
 		public bool SetVisibility(int id, bool isPublic)
 		{
 			return componentGlobalService.SetVisibility(id, isPublic);
@@ -66,6 +81,18 @@ namespace ECX_WebAPI_ClientClayer.Services
 		public bool Update(ComponentClient component)
 		{
 			return componentGlobalService.Update(component.ToComponentGlobal());
+		} 
+
+		#endregion
+
+		#region DELETE Methods
+
+		public bool Delete(int id)
+		{
+			return componentGlobalService.Delete(id);
 		}
+
+		#endregion
+
 	}
 }

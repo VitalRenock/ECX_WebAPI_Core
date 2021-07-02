@@ -79,8 +79,12 @@ namespace ECX_WebAPI_Core.Controllers
 		[Route("Create")]
 		public IActionResult Create([FromBody] FormCreateNote form)
 		{
-			int id = noteClientService.Create(form.ToNoteClient());
-			return Ok(id);
+			int newId = noteClientService.Create(form.ToNoteClient());
+			
+			if (newId > 0)
+				return Ok(newId);
+			else
+				return BadRequest();
 		}
 
 		#endregion

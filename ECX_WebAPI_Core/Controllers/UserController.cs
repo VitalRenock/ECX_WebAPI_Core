@@ -8,20 +8,28 @@ using ECX_WebAPI_ClientClayer.Models;
 using ECX_WebAPI_Core.Models;
 using ECX_WebAPI_Core.Mappers;
 using ECX_WebAPI_ClientClayer.Services;
+using ECX_WebAPI_Core.tools;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECX_WebAPI_Core.Controllers
 {
 	[ApiController]
 	[Route("api/[controller]")]
+	[Authorize]
 	public class UserController : ControllerBase
 	{
 		private readonly UserClientService userClientService;
 
+		// On déclare le service de token
+		private ITokenManager tokenManager;
+
 		#region Constructor
 		
-		public UserController(UserClientService userClientService)
+		public UserController(UserClientService userClientService, ITokenManager tokenManager)
 		{
 			this.userClientService = userClientService;
+			// Injection du service de token
+			this.tokenManager = tokenManager;
 		}
 
 		#endregion
@@ -30,9 +38,18 @@ namespace ECX_WebAPI_Core.Controllers
 
 		[HttpGet]
 		[Route("GetAll")]
+		[AllowAnonymous]
 		public IEnumerable<UserClient> GetUsers()
 		{
 			return userClientService.GetAllUsers();
+		}
+
+		[HttpGet]
+		[Route("GetUserById")]
+		[AllowAnonymous]
+		public UserClient GetUserById(int id)
+		{
+			return userClientService.GetUserById(id);
 		}
 
 		#endregion
@@ -41,6 +58,7 @@ namespace ECX_WebAPI_Core.Controllers
 
 		[HttpPost]
 		[Route("Register")]
+		[AllowAnonymous]
 		public IActionResult Register([FromBody] FormRegister form)
 		{
 			if (userClientService.Register(form.ToUserClient()))
@@ -51,23 +69,28 @@ namespace ECX_WebAPI_Core.Controllers
 
 		[HttpPost]
 		[Route("Login")]
+		[AllowAnonymous]
 		public IActionResult Login([FromBody] FormLogin form)
 		{
+			// On vérifie le formulaire recu
+			if (form is null || !ModelState.IsValid)
+				return BadRequest();
+
+			// On requête le Service
 			UserClient user = userClientService.Login(form.Email, form.Password);
 
 			// Sécurité Password
 			form = null;
 
-			if (user != null)
-			{
-				return Ok(user);
-			}
-			else
+			if (user is null)
 				return BadRequest();
+			
+			return Ok(tokenManager.GenerateToken(user));
 		}
 
-		[HttpPost]
+		[HttpPut]
 		[Route("SetRole")]
+		[Authorize("Administrateur")]
 		public IActionResult SetRole([FromBody] FormSetRoleUser form)
 		{
 			if (userClientService.SetRole(form.User_Id, form.Role_Name))
@@ -81,6 +104,7 @@ namespace ECX_WebAPI_Core.Controllers
 		#region PUT Methods
 
 		[HttpPut]
+		[AllowAnonymous]
 		public IActionResult Update([FromBody] FormUpdateUser user)
 		{
 			if (userClientService.Update(user.ToUserClient()))
@@ -94,6 +118,7 @@ namespace ECX_WebAPI_Core.Controllers
 		#region DELETE Methods
 
 		[HttpDelete("{id}")]
+		[AllowAnonymous]
 		public IActionResult Delete(int id)
 		{
 			if (userClientService.Delete(id))

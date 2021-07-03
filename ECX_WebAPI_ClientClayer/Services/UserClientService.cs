@@ -35,6 +35,11 @@ namespace ECX_WebAPI_ClientClayer.Services
 			return user;
 		}
 
+		public UserClient GetUserById(int id)
+		{
+			return userGlobalService.GetUserById(id).ToUserClient();
+		}
+
 		public bool Register(UserClient user)
 		{
 			bool result = userGlobalService.Register(user.ToUserGlobal());

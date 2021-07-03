@@ -62,6 +62,14 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			return user;
 		}
 
+		public UserGlobal GetUserById(int id)
+		{
+			Command command = new Command("ECX_Get_UserById", true);
+			command.AddParameter("userId", id);
+
+			return connection.ExecuteReader(command, (datarecord) => datarecord.ToUserGlobal()).SingleOrDefault();
+		}
+
 		public bool Update(UserGlobal user)
 		{
 			Command command = new Command("ECX_Update_User", true);

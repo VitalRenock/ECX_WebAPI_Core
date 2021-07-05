@@ -71,6 +71,14 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			return connection.ExecuteReader(command, (datarecord) => datarecord.ToNoteGlobal()).SingleOrDefault();
 		}
 
+		public NoteGlobal GetNoteById(int id)
+		{
+			Command command = new Command("ECX_Get_NoteById", true);
+			command.AddParameter("note_id", id);
+
+			return connection.ExecuteReader(command, (datarecord) => datarecord.ToNoteGlobal()).SingleOrDefault();
+		}
+
 		#endregion
 
 		#region POST Methods

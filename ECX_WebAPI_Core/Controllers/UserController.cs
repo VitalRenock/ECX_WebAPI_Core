@@ -88,26 +88,27 @@ namespace ECX_WebAPI_Core.Controllers
 			return Ok(tokenManager.GenerateToken(user));
 		}
 
+		#endregion
+
+		#region PUT Methods
+
+		[HttpPut]
+		[Route("Update")]
+		[AllowAnonymous]
+		public IActionResult Update([FromBody] FormUpdateUser user)
+		{
+			if (userClientService.Update(user.ToUserClient()))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
 		[HttpPut]
 		[Route("SetRole")]
 		[Authorize("Administrateur")]
 		public IActionResult SetRole([FromBody] FormSetRoleUser form)
 		{
 			if (userClientService.SetRole(form.User_Id, form.Role_Name))
-				return Ok();
-			else
-				return BadRequest();
-		}
-
-		#endregion
-
-		#region PUT Methods
-
-		[HttpPut]
-		[AllowAnonymous]
-		public IActionResult Update([FromBody] FormUpdateUser user)
-		{
-			if (userClientService.Update(user.ToUserClient()))
 				return Ok();
 			else
 				return BadRequest();

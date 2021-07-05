@@ -71,6 +71,13 @@ namespace ECX_WebAPI_Core.Controllers
 			return noteClientService.GetPublicNote(id);
 		}
 
+		[HttpGet]
+		[Route("GetNoteById/{id}")]
+		public NoteClient GetNoteById(int id)
+		{
+			return noteClientService.GetNoteById(id);
+		}
+
 		#endregion
 
 		#region POST Methods

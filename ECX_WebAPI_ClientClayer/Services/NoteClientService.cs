@@ -55,6 +55,11 @@ namespace ECX_WebAPI_ClientClayer.Services
 			return noteGlobalService.GetPublicNote(id).ToNoteClient();
 		}
 
+		public NoteClient GetNoteById(int id)
+		{
+			return noteGlobalService.GetNoteById(id).ToNoteClient();
+		}
+
 		#endregion
 
 		#region POST Methods

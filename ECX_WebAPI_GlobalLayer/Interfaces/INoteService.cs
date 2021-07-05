@@ -16,5 +16,6 @@ namespace ECX_WebAPI_GlobalLayer.Interfaces
 		IEnumerable<string> GetCategories();
 		IEnumerable<TModel> GetPublicNotesByCategory(string category);
 		TModel GetPublicNote(int id);
+		TModel GetNoteById(int id);
 	}
 }

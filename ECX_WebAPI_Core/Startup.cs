@@ -135,7 +135,7 @@ namespace ECX_WebAPI_Core
 
 			#region Sécurisation de l'API
 
-			// On autorise toutes sortes de requêtes (Post, Put, ...) (Header: Bearer, Token) (Origin: totu serveur)
+			// On autorise toutes sortes de requêtes (Post, Put, ...) (Header: Bearer, Token) (Origin: tout serveur)
 			app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 
 			// Utilisation de la vérification des appels sur l'API

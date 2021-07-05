@@ -78,7 +78,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			command.AddParameter("lastname", user.Lastname);
 			command.AddParameter("firstname", user.Firstname);
 
-			return connection.ExecuteNonQuery(command) == 0;
+			return connection.ExecuteNonQuery(command) != 0;
 		}
 
 		public bool Delete(int id)

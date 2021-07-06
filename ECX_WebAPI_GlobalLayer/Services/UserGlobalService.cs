@@ -91,7 +91,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 
 		public IEnumerable<UserGlobal> GetAllUsers()
 		{
-			Command command = new Command("SELECT * FROM ECX_View_AllUsers", false);
+			Command command = new Command("SELECT * FROM ECX_GetAll_Users", false);
 
 			return connection.ExecuteReader(command, u => u.ToUserGlobal());
 		}

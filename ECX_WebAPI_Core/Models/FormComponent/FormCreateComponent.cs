@@ -11,9 +11,9 @@ namespace ECX_WebAPI_Core.Models.FormComponent
 		[Required]
 		public string Title { get; set; }
 		[Required]
-		public string Content { get; set; }
+		public string Type { get; set; }
 		[Required]
-		public string Short { get; set; }
+		public string Content { get; set; }
 		[Required]
 		public string Description { get; set; }
 		[Required]
@@ -22,5 +22,7 @@ namespace ECX_WebAPI_Core.Models.FormComponent
 		public bool IsPublic { get; set; }
 		[Required]
 		public int User_Id { get; set; }
+		[Required]
+		public int Category_Id { get; set; }
 	}
 }

@@ -34,12 +34,12 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 			{
 				Id = (int)dataRecord["ID"],
 				Title = (string)dataRecord["Title"],
-				Category = (string)dataRecord["Category"],
 				IsPublic = (bool)dataRecord["Public"],
 				ReviewState = (string)dataRecord["StateReview"],
 				ReviewCommentary = dataRecord["CommentaryReview"] is DBNull ? null : (string)dataRecord["CommentaryReview"],
 				ParentNote_Id = dataRecord["ParentNote_ID"] is DBNull ? null : (int)dataRecord["ParentNote_ID"],
-				User_Id = (int)dataRecord["User_ID"]
+				User_Id = (int)dataRecord["User_ID"],
+				Category_Id = (int)dataRecord["Category_ID"]
 			};
 		}
 
@@ -53,12 +53,13 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 			{
 				Id = (int)dataRecord["ID"],
 				Title = (string)dataRecord["Title"],
+				Type = (string)dataRecord["Type"],
 				Content = dataRecord["Content"] is DBNull ? null : (string)dataRecord["Content"],
-				Short = dataRecord["Short"] is DBNull ? null : (string)dataRecord["Short"],
 				Description = dataRecord["Description"] is DBNull ? null : (string)dataRecord["Description"],
 				Url = dataRecord["Url"] is DBNull ? null : (string)dataRecord["Url"],
 				IsPublic = (bool)dataRecord["Public"],
-				User_Id = (int)dataRecord["User_ID"]
+				User_Id = (int)dataRecord["User_ID"],
+				Category_Id = (int)dataRecord["Category_ID"]
 			};
 		}
 
@@ -74,6 +75,22 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 				Name = (string)dataRecord["Name"],
 				Color = dataRecord["Color"] is DBNull ? null : (string)dataRecord["Color"],
 				Description = dataRecord["Description"] is DBNull ? null : (string)dataRecord["Description"]
+			};
+		}
+
+		#endregion
+
+		#region Category
+
+		internal static CategoryGlobal ToCategoryGlobal(this IDataRecord dataRecord)
+		{
+			return new CategoryGlobal()
+			{
+				Id = (int)dataRecord["ID"],
+				Name = (string)dataRecord["Name"],
+				Color = (string)dataRecord["Color"],
+				Short = (string)dataRecord["Short"],
+				Description = (string)dataRecord["Description"]
 			};
 		}
 

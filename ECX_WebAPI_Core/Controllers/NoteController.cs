@@ -51,25 +51,18 @@ namespace ECX_WebAPI_Core.Controllers
 		}
 
 		[HttpGet]
-		[Route("GetCategories")]
-		public IEnumerable<string> GetCategories()
+		[Route("GetPublicNotesByCategory/{category_id}")]
+		public IEnumerable<NoteClient> GetPublicNotesByCategory(int category_id)
 		{
-			return noteClientService.GetCategories();
+			return noteClientService.GetPublicNotesByCategory(category_id);
 		}
 
-		[HttpGet]
-		[Route("GetPublicNotesByCategory/{category}")]
-		public IEnumerable<NoteClient> GetPublicNotesByCategory(string category)
-		{
-			return noteClientService.GetPublicNotesByCategory(category);
-		}
-
-		[HttpGet]
-		[Route("GetPublicNote/{id}")]
-		public NoteClient GetPublicNote(int id)
-		{
-			return noteClientService.GetPublicNote(id);
-		}
+		//[HttpGet]
+		//[Route("GetPublicNote/{id}")]
+		//public NoteClient GetPublicNote(int id)
+		//{
+		//	return noteClientService.GetPublicNote(id);
+		//}
 
 		[HttpGet]
 		[Route("GetNoteById/{id}")]

@@ -13,6 +13,6 @@ namespace ECX_WebAPI_Core.Models.FormsNote
 		[Required]
 		public string Title { get; set; }
 		[Required]
-		public string Category { get; set; }
+		public int Category_Id { get; set; }
 	}
 }

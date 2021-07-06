@@ -62,7 +62,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 
 		public IEnumerable<RoleGlobal> GetAll()
 		{
-			Command command = new Command("SELECT * FROM ECX_View_AllRoles", false);
+			Command command = new Command("SELECT * FROM ECX_GetAll_Roles", false);
 
 			return connection.ExecuteReader(command, r => r.ToRoleGlobal());
 		}

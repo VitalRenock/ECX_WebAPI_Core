@@ -27,14 +27,14 @@ namespace ECX_WebAPI_GlobalLayer.Services
 		
 		public IEnumerable<ComponentGlobal> GetAllComponents()
 		{
-			Command command = new Command("SELECT * FROM ECX_View_AllComponents", false);
+			Command command = new Command("SELECT * FROM ECX_GetAll_Components", false);
 
 			return connection.ExecuteReader(command, c => c.ToComponentGlobal());
 		}
 
 		public IEnumerable<ComponentGlobal> GetAllUserComponents(int id)
 		{
-			Command command = new Command("ECX_Get_AllUserComponents", true);
+			Command command = new Command("ECX_GetAll_Components_ByUser", true);
 			command.AddParameter("user_id", id);
 
 			return connection.ExecuteReader(command, c => c.ToComponentGlobal());
@@ -42,7 +42,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 
 		public IEnumerable<ComponentGlobal> GetPublicUserComponents(int id)
 		{
-			Command command = new Command("ECX_Get_PublicUserComponents", true);
+			Command command = new Command("ECX_GetAll_PublicComponents_ByUser", true);
 			command.AddParameter("user_id", id);
 
 			return connection.ExecuteReader(command, c => c.ToComponentGlobal());
@@ -50,7 +50,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 
 		public IEnumerable<ComponentGlobal> GetComponentsByNote(int noteId)
 		{
-			Command command = new Command("ECX_Get_ComponentsByNote", true);
+			Command command = new Command("ECX_GetAll_Components_ByNote", true);
 			command.AddParameter("note_id", noteId);
 
 			return connection.ExecuteReader(command, (datarecord) => datarecord.ToComponentGlobal());
@@ -58,7 +58,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 
 		public IEnumerable<ComponentGlobal> GetPublicComponentsByNote(int noteId)
 		{
-			Command command = new Command("ECX_Get_PublicComponentsByNote", true);
+			Command command = new Command("ECX_GetAll_PublicComponents_ByNote", true);
 			command.AddParameter("note_id", noteId);
 
 			return connection.ExecuteReader(command, (datarecord) => datarecord.ToComponentGlobal());
@@ -66,7 +66,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 
 		public ComponentGlobal GetUserComponent(int compo_id)
 		{
-			Command command = new Command("ECX_Get_UserComponent", true);
+			Command command = new Command("ECX_Get_Component_ById", true);
 			command.AddParameter("compo_id", compo_id);
 
 			return connection.ExecuteReader(command, (datarecord) => datarecord.ToComponentGlobal()).SingleOrDefault();
@@ -80,12 +80,13 @@ namespace ECX_WebAPI_GlobalLayer.Services
 		{
 			Command command = new Command("ECX_Create_Component", true);
 			command.AddParameter("title", component.Title);
+			command.AddParameter("type", component.Type);
 			command.AddParameter("content", component.Content);
-			command.AddParameter("short", component.Short);
 			command.AddParameter("description", component.Description);
 			command.AddParameter("url", component.Url);
 			command.AddParameter("public", component.IsPublic);
 			command.AddParameter("user_ID", component.User_Id);
+			command.AddParameter("category_ID", component.Category_Id);
 
 			return (int)connection.ExecuteScalar(command);
 		}
@@ -108,10 +109,11 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			Command command = new Command("ECX_Update_Component", true);
 			command.AddParameter("component_id", component.Id);
 			command.AddParameter("title", component.Title);
+			command.AddParameter("type", component.Type);
 			command.AddParameter("content", component.Content);
-			command.AddParameter("short", component.Short);
 			command.AddParameter("description", component.Description);
 			command.AddParameter("url", component.Url);
+			command.AddParameter("category_ID", component.Category_Id);
 
 			return connection.ExecuteNonQuery(command) != 0;
 		}

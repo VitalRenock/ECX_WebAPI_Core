@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ECX_WebAPI_ClientClayer.Models;
 using ECX_WebAPI_Core.Models;
 using ECX_WebAPI_Core.Models.FormComponent;
+using ECX_WebAPI_Core.Models.FormsCategory;
 using ECX_WebAPI_Core.Models.FormsNote;
 using ECX_WebAPI_Core.Models.FormsRole;
 
@@ -45,10 +46,10 @@ namespace ECX_WebAPI_Core.Mappers
 		{
 			return new NoteClient(
 				form.Title,
-				form.Category,
 				form.IsPublic, 
 				form.ParentNote_Id, 
-				form.User_Id
+				form.User_Id,
+				form.Category_Id
 				);
 		}
 
@@ -57,7 +58,7 @@ namespace ECX_WebAPI_Core.Mappers
 			return new NoteClient(
 				form.Id,	
 				form.Title,
-				form.Category
+				form.Category_Id
 				);
 		}
 
@@ -69,12 +70,13 @@ namespace ECX_WebAPI_Core.Mappers
 		{
 			return new ComponentClient(
 				form.Title,
+				form.Type,
 				form.Content,
-				form.Short,
 				form.Description,
 				form.Url,
 				form.IsPublic,
-				form.User_Id
+				form.User_Id,
+				form.Category_Id
 				);
 		}
 
@@ -83,10 +85,11 @@ namespace ECX_WebAPI_Core.Mappers
 			return new ComponentClient(
 				form.Id,
 				form.Title,
+				form.Type,
 				form.Content,
-				form.Short,
 				form.Description,
-				form.Url
+				form.Url,
+				form.Category_Id
 				);
 		}
 
@@ -109,6 +112,31 @@ namespace ECX_WebAPI_Core.Mappers
 				form.Id,
 				form.Name,
 				form.Color,
+				form.Description
+				);
+		}
+
+		#endregion
+
+		#region Category Mappers
+
+		internal static CategoryClient ToCategoryClient(this FormCreateCategory form)
+		{
+			return new CategoryClient(
+				form.Name,
+				form.Color,
+				form.Short,
+				form.Description
+				);
+		}
+
+		internal static CategoryClient ToCategoryClient(this FormUpdateCategory form)
+		{
+			return new CategoryClient(
+				form.Id,
+				form.Name,
+				form.Color,
+				form.Short,
 				form.Description
 				);
 		}

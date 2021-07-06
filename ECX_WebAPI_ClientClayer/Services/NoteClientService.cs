@@ -40,14 +40,9 @@ namespace ECX_WebAPI_ClientClayer.Services
 			return noteGlobalService.GetPublicUserNotes(id).Select((n) => n.ToNoteClient());
 		}
 
-		public IEnumerable<string> GetCategories()
+		public IEnumerable<NoteClient> GetPublicNotesByCategory(int category_id)
 		{
-			return noteGlobalService.GetCategories();
-		}
-
-		public IEnumerable<NoteClient> GetPublicNotesByCategory(string category)
-		{
-			return noteGlobalService.GetPublicNotesByCategory(category).Select((n) => n.ToNoteClient());
+			return noteGlobalService.GetPublicNotesByCategory(category_id).Select((n) => n.ToNoteClient());
 		}
 
 		public NoteClient GetPublicNote(int id)

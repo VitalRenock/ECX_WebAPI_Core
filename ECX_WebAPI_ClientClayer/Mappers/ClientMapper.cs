@@ -48,12 +48,12 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 			{
 				Id = note.Id,
 				Title = note.Title,
-				Category = note.Category,
 				IsPublic = note.IsPublic,
 				ReviewState = note.ReviewState,
 				ReviewCommentary = note.ReviewCommentary,
 				ParentNote_Id = note.ParentNote_Id,
-				User_Id = note.User_Id
+				User_Id = note.User_Id,
+				Category_Id = note.Category_Id
 			};
 		}
 
@@ -62,12 +62,12 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 			return new NoteClient(
 				note.Id, 
 				note.Title,
-				note.Category,
 				note.IsPublic, 
 				note.ReviewState, 
 				note.ReviewCommentary, 
 				note.ParentNote_Id, 
-				note.User_Id
+				note.User_Id,
+				note.Category_Id
 				);
 		}
 
@@ -81,12 +81,13 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 			{
 				Id = component.Id,
 				Title = component.Title,
+				Type = component.Type,
 				Content = component.Content,
-				Short = component.Short,
 				Description = component.Description,
 				Url = component.Url,
 				IsPublic = component.IsPublic,
-				User_Id = component.User_Id
+				User_Id = component.User_Id,
+				Category_Id = component.Category_Id
 			};
 		}
 
@@ -96,12 +97,13 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 			(
 				component.Id,
 				component.Title,
+				component.Type,
 				component.Content,
-				component.Short,
 				component.Description,
 				component.Url,
 				component.IsPublic,
-				component.User_Id
+				component.User_Id,
+				component.Category_Id
 			);
 		}
 
@@ -128,6 +130,34 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 				role.Name,
 				role.Color,
 				role.Description
+			);
+		}
+
+		#endregion
+
+		#region Category Mapper
+
+		internal static CategoryGlobal ToCategoryGlobal(this CategoryClient category)
+		{
+			return new CategoryGlobal()
+			{
+				Id = category.Id,
+				Name = category.Name,
+				Color = category.Color,
+				Short = category.Short,
+				Description = category.Description
+			};
+		}
+
+		internal static CategoryClient ToCategoryClient(this CategoryGlobal category)
+		{
+			return new CategoryClient
+			(
+				category.Id,
+				category.Name,
+				category.Color,
+				category.Short,
+				category.Description
 			);
 		}
 

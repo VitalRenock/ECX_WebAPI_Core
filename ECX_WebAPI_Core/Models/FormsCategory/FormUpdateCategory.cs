@@ -4,23 +4,19 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ECX_WebAPI_Core.Models.FormComponent
+namespace ECX_WebAPI_Core.Models.FormsCategory
 {
-	public class FormUpdateComponent
+	public class FormUpdateCategory
 	{
 		[Required]
 		public int Id { get; set; }
 		[Required]
-		public string Title { get; set; }
+		public string Name { get; set; }
 		[Required]
-		public string Type { get; set; }
+		public string Color { get; set; }
 		[Required]
-		public string Content { get; set; }
+		public string Short { get; set; }
 		[Required]
 		public string Description { get; set; }
-		[Required]
-		public string Url { get; set; }
-		[Required]
-		public int Category_Id { get; set; }
 	}
 }

@@ -94,6 +94,10 @@ namespace ECX_WebAPI_Core
 			//services.AddSingleton<IServiceModelAUTH<UserGlobal>, UserGlobalService>();
 			//services.AddSingleton<IServiceModelAUTH<UserClient>, UserClientService>();
 
+			// Category Service Injection
+			services.AddSingleton<CategoryGlobalService>();
+			services.AddSingleton<CategoryClientService>();
+
 			// User Service Injection
 			services.AddSingleton<UserGlobalService>();
 			services.AddSingleton<UserClientService>();

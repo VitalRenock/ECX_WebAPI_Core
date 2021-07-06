@@ -45,7 +45,7 @@ namespace ECX_WebAPI_Core.Controllers
 		}
 
 		[HttpGet]
-		[Route("GetUserById")]
+		[Route("GetUserById/{id}")]
 		[AllowAnonymous]
 		public UserClient GetUserById(int id)
 		{

@@ -105,7 +105,8 @@ namespace ECX_WebAPI_Core.Controllers
 
 		[HttpPut]
 		[Route("SetRole")]
-		[Authorize("Administrateur")]
+		//[Authorize("Administrateur")]
+		[AllowAnonymous]
 		public IActionResult SetRole([FromBody] FormSetRoleUser form)
 		{
 			if (userClientService.SetRole(form.User_Id, form.Role_Name))

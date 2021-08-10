@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ECX_WebAPI_GlobalLayer.Models
 {
+	/// <summary>
+	/// POCO class for Category
+	/// </summary>
 	public class CategoryGlobal
 	{
 		public int Id { get; set; }

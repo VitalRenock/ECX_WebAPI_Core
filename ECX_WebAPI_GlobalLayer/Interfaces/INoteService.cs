@@ -4,6 +4,10 @@ using System.Text;
 
 namespace ECX_WebAPI_GlobalLayer.Interfaces
 {
+	/// <summary>
+	/// Interface for Note Services
+	/// </summary>
+	/// <typeparam name="TModel">Provide a Note Model</typeparam>
 	public interface INoteService<TModel>
 	{
 		int Create(TModel note);

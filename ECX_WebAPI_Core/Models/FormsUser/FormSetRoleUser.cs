@@ -4,14 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ECX_WebAPI_Core.Models
+namespace ECX_WebAPI_Core.Models.FormsUser
 {
-	public class FormLogin
+	public class FormSetRoleUser
 	{
 		[Required]
-		[EmailAddress]
-		public string Email { get; set; }
+		public int User_Id { get; set; }
 		[Required]
-		public string Password { get; set; }
+		public string Role_Name { get; set; }
 	}
 }

@@ -10,6 +10,9 @@ using VitalTools.Database;
 
 namespace ECX_WebAPI_GlobalLayer.Services
 {
+	/// <summary>
+	/// Global Service for Role
+	/// </summary>
 	public class RoleGlobalService : IRoleService<RoleGlobal>
 	{
 		Connection connection;

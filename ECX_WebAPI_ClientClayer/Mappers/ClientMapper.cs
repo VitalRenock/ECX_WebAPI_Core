@@ -87,7 +87,8 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 				Url = component.Url,
 				IsPublic = component.IsPublic,
 				User_Id = component.User_Id,
-				Category_Id = component.Category_Id
+				Category_Id = component.Category_Id,
+				Order = component.Order
 			};
 		}
 
@@ -103,7 +104,8 @@ namespace ECX_WebAPI_ClientClayer.Mappers
 				component.Url,
 				component.IsPublic,
 				component.User_Id,
-				component.Category_Id
+				component.Category_Id,
+				component.Order
 			);
 		}
 

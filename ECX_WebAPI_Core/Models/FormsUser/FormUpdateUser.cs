@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ECX_WebAPI_Core.Models
+namespace ECX_WebAPI_Core.Models.FormsUser
 {
 	public class FormUpdateUser
 	{

@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ECX_WebAPI_Core.Models
+namespace ECX_WebAPI_Core.Models.FormComponent
 {
-	public class FormSetRoleUser
+	public class FormRemoveCompoToNote
 	{
 		[Required]
-		public int User_Id { get; set; }
+		public int NoteId { get; set; }
 		[Required]
-		public string Role_Name { get; set; }
+		public int ComponentId { get; set; }
 	}
 }

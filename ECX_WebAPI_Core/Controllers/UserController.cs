@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using ECX_WebAPI_ClientClayer.Models;
-using ECX_WebAPI_Core.Models;
+using ECX_WebAPI_Core.Models.FormsUser;
 using ECX_WebAPI_Core.Mappers;
 using ECX_WebAPI_ClientClayer.Services;
 using ECX_WebAPI_Core.tools;

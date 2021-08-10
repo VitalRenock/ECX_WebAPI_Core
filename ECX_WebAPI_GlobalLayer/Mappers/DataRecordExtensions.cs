@@ -7,6 +7,9 @@ using ECX_WebAPI_GlobalLayer.Models;
 
 namespace ECX_WebAPI_GlobalLayer.Mappers
 {
+	/// <summary>
+	/// Mapper for cast a DataRecord into model.
+	/// </summary>
 	internal static class DataRecordExtensions
 	{
 		#region User
@@ -60,6 +63,23 @@ namespace ECX_WebAPI_GlobalLayer.Mappers
 				IsPublic = (bool)dataRecord["Public"],
 				User_Id = (int)dataRecord["User_ID"],
 				Category_Id = (int)dataRecord["Category_ID"]
+			};
+		}
+
+		internal static ComponentGlobal ToComponentGlobalWithOrder(this IDataRecord dataRecord)
+		{
+			return new ComponentGlobal()
+			{
+				Id = (int)dataRecord["ID"],
+				Title = (string)dataRecord["Title"],
+				Type = (string)dataRecord["Type"],
+				Content = dataRecord["Content"] is DBNull ? null : (string)dataRecord["Content"],
+				Description = dataRecord["Description"] is DBNull ? null : (string)dataRecord["Description"],
+				Url = dataRecord["Url"] is DBNull ? null : (string)dataRecord["Url"],
+				IsPublic = (bool)dataRecord["Public"],
+				User_Id = (int)dataRecord["User_ID"],
+				Category_Id = (int)dataRecord["Category_ID"],
+				Order = (int)dataRecord["Order"]
 			};
 		}
 

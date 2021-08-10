@@ -12,12 +12,11 @@ namespace ECX_WebAPI_Core.Models.FormComponent
 		public string Title { get; set; }
 		[Required]
 		public string Type { get; set; }
-		[Required]
+		
 		public string Content { get; set; }
-		[Required]
 		public string Description { get; set; }
-		[Required]
 		public string Url { get; set; }
+
 		[Required]
 		public bool IsPublic { get; set; }
 		[Required]

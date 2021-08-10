@@ -10,6 +10,9 @@ using VitalTools.Database;
 
 namespace ECX_WebAPI_GlobalLayer.Services
 {
+	/// <summary>
+	/// Global Service for Note
+	/// </summary>
 	public class NoteGlobalService : INoteService<NoteGlobal>
 	{
 		private Connection connection;

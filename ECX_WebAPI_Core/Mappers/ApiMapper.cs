@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using ECX_WebAPI_ClientClayer.Models;
-using ECX_WebAPI_Core.Models;
 using ECX_WebAPI_Core.Models.FormComponent;
 using ECX_WebAPI_Core.Models.FormsCategory;
 using ECX_WebAPI_Core.Models.FormsNote;
 using ECX_WebAPI_Core.Models.FormsRole;
+using ECX_WebAPI_Core.Models.FormsUser;
 
 namespace ECX_WebAPI_Core.Mappers
 {

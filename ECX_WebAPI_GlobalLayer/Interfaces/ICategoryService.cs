@@ -4,6 +4,10 @@ using System.Text;
 
 namespace ECX_WebAPI_GlobalLayer.Interfaces
 {
+	/// <summary>
+	/// Interface for Category Services
+	/// </summary>
+	/// <typeparam name="TModel">Provide a Category Model</typeparam>
 	public interface ICategoryService<TModel>
 	{
 		TModel GetCategoryById(int id);

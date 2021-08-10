@@ -10,6 +10,9 @@ using VitalTools.Database;
 
 namespace ECX_WebAPI_GlobalLayer.Services
 {
+	/// <summary>
+	/// Global Service for Component
+	/// </summary>
 	public class ComponentGlobalService : IComponentService<ComponentGlobal>
 	{
 		private Connection connection;
@@ -53,7 +56,7 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			Command command = new Command("ECX_GetAll_Components_ByNote", true);
 			command.AddParameter("note_id", noteId);
 
-			return connection.ExecuteReader(command, (datarecord) => datarecord.ToComponentGlobal());
+			return connection.ExecuteReader(command, (datarecord) => datarecord.ToComponentGlobalWithOrder());
 		}
 
 		public IEnumerable<ComponentGlobal> GetPublicComponentsByNote(int noteId)
@@ -81,9 +84,9 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			Command command = new Command("ECX_Create_Component", true);
 			command.AddParameter("title", component.Title);
 			command.AddParameter("type", component.Type);
-			command.AddParameter("content", component.Content);
-			command.AddParameter("description", component.Description);
-			command.AddParameter("url", component.Url);
+			command.AddParameter("content", component.Content == null ? DBNull.Value : component.Content);
+			command.AddParameter("description", component.Description is null ? DBNull.Value : component.Description);
+			command.AddParameter("url", component.Url is null ? DBNull.Value : component.Url);
 			command.AddParameter("public", component.IsPublic);
 			command.AddParameter("user_ID", component.User_Id);
 			command.AddParameter("category_ID", component.Category_Id);
@@ -127,6 +130,16 @@ namespace ECX_WebAPI_GlobalLayer.Services
 			return connection.ExecuteNonQuery(command) != 0;
 		}
 
+		public bool SwitchComponentsOrder(int noteId, int compo1Id, int compo2Id)
+		{
+			Command command = new Command("[ECX_Switch_ComponentsOrder_ByNote]", true);
+			command.AddParameter("note_id", noteId);
+			command.AddParameter("component1_id", compo1Id);
+			command.AddParameter("component2_id", compo2Id);
+
+			return connection.ExecuteNonQuery(command) != 0;
+		}
+
 		#endregion
 
 		#region DELETE Methods
@@ -135,6 +148,15 @@ namespace ECX_WebAPI_GlobalLayer.Services
 		{
 			Command command = new Command("ECX_Delete_Component", true);
 			command.AddParameter("component_id", id);
+
+			return connection.ExecuteNonQuery(command) != 0;
+		}
+
+		public bool RemoveComponentToNote(int noteId, int componentId)
+		{
+			Command command = new Command("ECX_Remove_ComponentToNote", true);
+			command.AddParameter("note_id", noteId);
+			command.AddParameter("component_id", componentId);
 
 			return connection.ExecuteNonQuery(command) != 0;
 		}

@@ -73,15 +73,20 @@ namespace ECX_WebAPI_ClientClayer.Services
 
 		#region PUT Methods
 		
+		public bool Update(ComponentClient component)
+		{
+			return componentGlobalService.Update(component.ToComponentGlobal());
+		}
+
 		public bool SetVisibility(int id, bool isPublic)
 		{
 			return componentGlobalService.SetVisibility(id, isPublic);
 		}
 
-		public bool Update(ComponentClient component)
+		public bool SwitchComponentsOrder(int noteId, int compo1Id, int compo2Id)
 		{
-			return componentGlobalService.Update(component.ToComponentGlobal());
-		} 
+			return componentGlobalService.SwitchComponentsOrder(noteId, compo1Id, compo2Id);
+		}
 
 		#endregion
 
@@ -90,6 +95,11 @@ namespace ECX_WebAPI_ClientClayer.Services
 		public bool Delete(int id)
 		{
 			return componentGlobalService.Delete(id);
+		}
+
+		public bool RemoveComponentToNote(int noteId, int componentId)
+		{
+			return componentGlobalService.RemoveComponentToNote(noteId, componentId);
 		}
 
 		#endregion

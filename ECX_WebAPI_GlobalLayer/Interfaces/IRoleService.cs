@@ -4,6 +4,10 @@ using System.Text;
 
 namespace ECX_WebAPI_GlobalLayer.Interfaces
 {
+	/// <summary>
+	/// Interface for Role Services
+	/// </summary>
+	/// <typeparam name="TModel">Provide a Role Model</typeparam>
 	public interface IRoleService<TModel>
 	{
 		bool Create(TModel role);

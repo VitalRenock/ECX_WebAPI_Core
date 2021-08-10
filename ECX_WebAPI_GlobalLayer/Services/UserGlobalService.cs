@@ -10,6 +10,9 @@ using VitalTools.Model.Services;
 
 namespace ECX_WebAPI_GlobalLayer.Services
 {
+	/// <summary>
+	/// Global Service for User
+	/// </summary>
 	public class UserGlobalService : IServiceModelAUTH<UserGlobal>
 	{
 		private Connection connection;

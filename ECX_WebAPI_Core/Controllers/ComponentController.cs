@@ -122,10 +122,20 @@ namespace ECX_WebAPI_Core.Controllers
 				return BadRequest();
 		}
 
+		[HttpPut]
+		[Route("SwitchComponentsOrder")]
+		public IActionResult SwitchComponentsOrder([FromBody] FormSwitchComposOrder form)
+		{
+			if (service.SwitchComponentsOrder(form.Note_Id, form.Component1_Id, form.Component2_Id))
+				return Ok();
+			else
+				return BadRequest();
+		}
+
 		#endregion
 
 		#region DELETE Methods
-		
+
 		[HttpDelete]
 		[Route("Delete/{id}")]
 		public IActionResult Delete(int id)
@@ -134,7 +144,17 @@ namespace ECX_WebAPI_Core.Controllers
 				return Ok();
 			else
 				return BadRequest();
-		} 
+		}
+
+		[HttpDelete]
+		[Route("RemoveComponentToNote")]
+		public IActionResult RemoveComponentToNote(int noteId, int componentId)
+		{
+			if (service.RemoveComponentToNote(noteId, componentId))
+				return Ok();
+			else
+				return BadRequest();
+		}
 
 		#endregion
 

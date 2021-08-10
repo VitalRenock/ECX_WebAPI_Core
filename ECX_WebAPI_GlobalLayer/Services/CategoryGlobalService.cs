@@ -10,6 +10,9 @@ using VitalTools.Database;
 
 namespace ECX_WebAPI_GlobalLayer.Services
 {
+	/// <summary>
+	/// Global Service for Category
+	/// </summary>
 	public class CategoryGlobalService : ICategoryService<CategoryGlobal>
 	{
 		private Connection connection;
